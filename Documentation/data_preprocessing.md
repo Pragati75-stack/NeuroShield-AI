@@ -1,0 +1,439 @@
+# Data Preprocessing Report
+**Project:** NeuroShield AI — Explainable Machine Learning Framework for Stroke Risk Prediction
+**Created by:** Nitya Zijoo
+**Last updated:** 19-08-2026
+
+---
+
+## 1.ABOUT:
+Preprocesing data is a very important step in  Machine learning 
+ 
+
+## 2. Dataset Overview:
+
+| Property | Before Cleaning | After Cleaning |
+|---|---:|---:|
+| Number of rows | | |
+| Number of columns | | |
+| Missing cells | | |
+| Duplicate rows | | |
+| Memory usage | | |
+|class distribution| | |
+
+---
+# 3. BEFORE PREPROCESSING:
+**SHAPE:** (433323, 350)
+**COLUMNS:** ['_STATE', 'FMONTH', 'IDATE', 'IMONTH', 'IDAY', 'IYEAR', 'DISPCODE', 'SEQNO', '_PSU', 'CTELENM1', 'PVTRESD1', 'COLGHOUS', 'STATERE1', 'CELPHON1', 'LADULT1', 'NUMADULT', 'RESPSLC1', 'LANDSEX2', 'LNDSXBRT', 'SAFETIME', 'CTELNUM1', 'CELLFON5', 'CADULT1', 'CELLSEX2', 'CELSXBRT', 'PVTRESD3', 'CCLGHOUS', 'CSTATE1', 'LANDLINE', 'HHADULT', 'SEXVAR', 'GENHLTH', 'PHYSHLTH', 'MENTHLTH', 'POORHLTH', 'PRIMINS1', 'PERSDOC3', 'MEDCOST1', 'CHECKUP1', 'EXERANY2', 'EXRACT12', 'EXEROFT1', 'EXERHMM1', 'EXRACT22', 'EXEROFT2', 'EXERHMM2', 'STRENGTH', 'BPHIGH6', 'BPMEDS1', 'CHOLCHK3', 'TOLDHI3', 'CHOLMED3', 'CVDINFR4', 'CVDCRHD4', 'CVDSTRK3', 'ASTHMA3', 'ASTHNOW', 'CHCSCNC1', 'CHCOCNC1', 'CHCCOPD3', 'ADDEPEV3', 'CHCKDNY2', 'HAVARTH4', 'DIABETE4', 'DIABAGE4', 'MARITAL', 'EDUCA', 'RENTHOM1', 'NUMHHOL4', 'NUMPHON4', 'CPDEMO1C', 'VETERAN3', 'EMPLOY1', 'CHILDREN', 'INCOME3', 'PREGNANT', 'WEIGHT2', 'HEIGHT3', 'DEAF', 'BLIND', 'DECIDE', 'DIFFWALK', 'DIFFDRES', 'DIFFALON', 'FALL12MN', 'FALLINJ5', 'SMOKE100', 'SMOKDAY2', 'USENOW3', 'ECIGNOW2', 'ALCDAY4', 'AVEDRNK3', 'DRNK3GE5', 'MAXDRNKS', 'FLUSHOT7', 'FLSHTMY3', 'PNEUVAC4', 'SHINGLE2', 'HIVTST7', 'HIVTSTD3', 'SEATBELT', 'DRNKDRI2', 'COVIDPO1', 'COVIDSM1', 'COVIDACT', 'PDIABTS1', 'PREDIAB2', 'DIABTYPE', 'INSULIN1', 'CHKHEMO3', 'EYEEXAM1', 'DIABEYE1', 'DIABEDU1', 'FEETSORE', 'ARTHEXER', 'ARTHEDU', 'LMTJOIN3', 'ARTHDIS2', 'JOINPAI2', 'LCSFIRST', 'LCSLAST', 'LCSNUMCG', 'LCSCTSC1', 'LCSSCNCR', 'LCSCTWHN', 'HADMAM', 'HOWLONG', 'CERVSCRN', 'CRVCLCNC', 'CRVCLPAP', 'CRVCLHPV', 'HADHYST2', 'PSATEST1', 'PSATIME1', 'PCPSARS2', 'PSASUGS1', 'PCSTALK2', 'HADSIGM4', 'COLNSIGM', 'COLNTES1', 'SIGMTES1', 'LASTSIG4', 'COLNCNCR', 'VIRCOLO1', 'VCLNTES2', 'SMALSTOL', 'STOLTEST', 'STOOLDN2', 'BLDSTFIT', 'SDNATES1', 'CNCRDIFF', 'CNCRAGE', 'CNCRTYP2', 'CSRVTRT3', 'CSRVDOC1', 'CSRVSUM', 'CSRVRTRN', 'CSRVINST', 'CSRVINSR', 'CSRVDEIN', 'CSRVCLIN', 'CSRVPAIN', 'CSRVCTL2', 'INDORTAN', 'NUMBURN3', 'SUNPRTCT', 'WKDAYOUT', 'WKENDOUT', 'CIMEMLO1', 'CDWORRY', 'CDDISCU1', 'CDHOUS1', 'CDSOCIA1', 'CAREGIV1', 'CRGVREL4', 'CRGVLNG1', 'CRGVHRS1', 'CRGVPRB3', 'CRGVALZD', 'CRGVPER1', 'CRGVHOU1', 'CRGVEXPT', 'LASTSMK2', 'STOPSMK2', 'MENTCIGS', 'MENTECIG', 'HEATTBCO', 'FIREARM5', 'GUNLOAD', 'LOADULK2', 'HASYMP1', 'HASYMP2', 'HASYMP3', 'HASYMP4', 'HASYMP5', 'HASYMP6', 'STRSYMP1', 'STRSYMP2', 'STRSYMP3', 'STRSYMP4', 'STRSYMP5', 'STRSYMP6', 'FIRSTAID', 'ASPIRIN', 'BIRTHSEX', 'SOMALE', 'SOFEMALE', 'TRNSGNDR', 'MARIJAN1', 'MARJSMOK', 'MARJEAT', 'MARJVAPE', 'MARJDAB', 'MARJOTHR', 'USEMRJN4', 'ACEDEPRS', 'ACEDRINK', 'ACEDRUGS', 'ACEPRISN', 'ACEDIVRC', 'ACEPUNCH', 'ACEHURT1', 'ACESWEAR', 'ACETOUCH', 'ACETTHEM', 'ACEHVSEX', 'ACEADSAF', 'ACEADNED', 'IMFVPLA4', 'HPVADVC4', 'HPVADSHT', 'TETANUS1', 'COVIDVA1', 'COVACGE1', 'COVIDNU2', 'LSATISFY', 'EMTSUPRT', 'SDLONELY', 'SDHEMPLY', 'FOODSTMP', 'SDHFOOD1', 'SDHBILLS', 'SDHUTILS', 'SDHTRNSP', 'SDHSTRE1', 'RRCLASS3', 'RRCOGNT2', 'RRTREAT', 'RRATWRK2', 'RRHCARE4', 'RRPHYSM2', 'RCSGEND1', 'RCSXBRTH', 'RCSRLTN2', 'CASTHDX2', 'CASTHNO2', 'QSTVER', 'QSTLANG', '_METSTAT', '_URBSTAT', 'MSCODE', '_STSTR', '_STRWT', '_RAWRAKE', '_WT2RAKE', '_IMPRACE', '_CHISPNC', '_CRACE1', 'CAGEG', '_CLLCPWT', '_DUALUSE', '_DUALCOR', '_LLCPWT2', '_LLCPWT', '_RFHLTH', '_PHYS14D', '_MENT14D', '_HLTHPL1', '_HCVU653', '_TOTINDA', 'METVL12_', 'METVL22_', 'MAXVO21_', 'FC601_', 'ACTIN13_', 'ACTIN23_', 'PADUR1_', 'PADUR2_', 'PAFREQ1_', 'PAFREQ2_', '_MINAC12', '_MINAC22', 'STRFREQ_', 'PAMISS3_', 'PAMIN13_', 'PAMIN23_', 'PA3MIN_', 'PAVIG13_', 'PAVIG23_', 'PA3VIGM_', '_PACAT3', '_PAINDX3', '_PA150R4', '_PA300R4', '_PA30023', '_PASTRNG', '_PAREC3', '_PASTAE3', '_RFHYPE6', '_CHOLCH3', '_RFCHOL3', '_MICHD', '_LTASTH1', '_CASTHM1', '_ASTHMS1', '_DRDXAR2', '_MRACE1', '_HISPANC', '_RACE', '_RACEG21', '_RACEGR3', '_RACEPRV', '_SEX', '_AGEG5YR', '_AGE65YR', '_AGE80', '_AGE_G', 'HTIN4', 'HTM4', 'WTKG3', '_BMI5', '_BMI5CAT', '_RFBMI5', '_CHLDCNT', '_EDUCAG', '_INCOMG1', '_SMOKER3', '_RFSMOK3', '_CURECI2', 'DRNKANY6', 'DROCDY4_', '_RFBING6', '_DRNKWK2', '_RFDRHV8', '_FLSHOT7', '_PNEUMO3', '_AIDTST4', '_RFSEAT2', '_RFSEAT3', '_DRNKDRV']
+  Column  Missing_Count  Missing_Percentage  Non_Missing_Count Data_Type
+SUNPRTCT         433323              100.00                  0   float64
+WKENDOUT         433323              100.00                  0   float64
+WKDAYOUT         433323              100.00                  0   float64
+NUMBURN3         433323              100.00                  0   float64
+COLGHOUS         433311              100.00                 12   float64
+INDORTAN         433323              100.00                  0   float64
+LASTSIG4         433177               99.97                146   float64
+LNDSXBRT         433154               99.96                169   float64
+CSRVCTL2         433101               99.95                222   float64
+VCLNTES2         432983               99.92                340   float64
+SDNATES1         432812               99.88                511   float64
+BLDSTFIT         432811               99.88                512   float64
+CRVCLHPV         432740               99.87                583   float64
+CRVCLPAP         432738               99.86                585   float64
+CRVCLCNC         432738               99.86                585   float64
+ HOWLONG         432409               99.79                914   float64
+  HADMAM         432230               99.75               1093   float64
+HADHYST2         432240               99.75               1083   float64
+CERVSCRN         432234               99.75               1089   float64
+SIGMTES1         432097               99.72               1226   float64
+CCLGHOUS         431972               99.69               1351   float64
+CSRVINST         431963               99.69               1360   float64
+CSRVDEIN         431526               99.59               1797   float64
+CSRVCLIN         431528               99.59               1795   float64
+CSRVRTRN         431518               99.58               1805   float64
+CSRVINSR         431524               99.58               1799   float64
+CSRVDOC1         431515               99.58               1808   float64
+ CSRVSUM         431516               99.58               1807   float64
+LCSCTWHN         431363               99.55               1960   float64
+STOLTEST         431162               99.50               2161   float64
+HPVADSHT         431031               99.47               2292   float64
+CELSXBRT         430745               99.41               2578   float64
+SMALSTOL         430728               99.40               2595   float64
+VIRCOLO1         430725               99.40               2598   float64
+STOOLDN2         430736               99.40               2587   float64
+RCSXBRTH         430689               99.39               2634   float64
+CSRVPAIN         430550               99.36               2773   float64
+CSRVTRT3         429652               99.15               3671   float64
+IMFVPLA4         429260               99.06               4063   float64
+USEMRJN4         428569               98.90               4754   float64
+CASTHNO2         428574               98.90               4749   float64
+ LCSLAST         426575               98.44               6748   float64
+NUMPHON4         425987               98.31               7336   float64
+COLNTES1         425874               98.28               7449   float64
+COLNSIGM         425666               98.23               7657   float64
+LCSNUMCG         425124               98.11               8199   float64
+LCSFIRST         424782               98.03               8541   float64
+HPVADVC4         424421               97.95               8902   float64
+CRGVALZD         423242               97.67              10081   float64
+LOADULK2         423168               97.66              10155   float64
+LCSSCNCR         423051               97.63              10272   float64
+FIRSTAID         422964               97.61              10359   float64
+STRSYMP6         422948               97.61              10375   float64
+STRSYMP5         422932               97.60              10391   float64
+STRSYMP3         422907               97.60              10416   float64
+STRSYMP4         422920               97.60              10403   float64
+STRSYMP1         422885               97.59              10438   float64
+STRSYMP2         422899               97.59              10424   float64
+ HASYMP2         422816               97.58              10507   float64
+ HASYMP5         422839               97.58              10484   float64
+ HASYMP3         422822               97.58              10501   float64
+ HASYMP6         422848               97.58              10475   float64
+ HASYMP4         422830               97.58              10493   float64
+ HASYMP1         422801               97.57              10522   float64
+COLNCNCR         422711               97.55              10612   float64
+HADSIGM4         422684               97.54              10639   float64
+CRGVHOU1         421987               97.38              11336   float64
+CRGVPER1         421976               97.38              11347   float64
+CRGVPRB3         421926               97.37              11397   float64
+MARJOTHR         421918               97.37              11405   float64
+ MARJDAB         421910               97.37              11413   float64
+CRGVLNG1         421866               97.36              11457   float64
+MARJSMOK         421883               97.36              11440   float64
+CRGVHRS1         421899               97.36              11424   float64
+ MARJEAT         421890               97.36              11433   float64
+MARJVAPE         421898               97.36              11425   float64
+CRGVREL4         421840               97.35              11483   float64
+MENTECIG         420868               97.13              12455   float64
+TETANUS1         420483               97.04              12840   float64
+PCPSARS2         417097               96.26              16226   float64
+PSASUGS1         417121               96.26              16202   float64
+PSATIME1         417077               96.25              16246   float64
+CNCRTYP2         416717               96.17              16606   float64
+ CNCRAGE         416694               96.16              16629   float64
+CNCRDIFF         416162               96.04              17161   float64
+COVACGE1         413068               95.33              20255   float64
+STOPSMK2         412594               95.22              20729   float64
+CDSOCIA1         410913               94.83              22410   float64
+ CDHOUS1         410880               94.82              22443   float64
+ CDWORRY         410840               94.81              22483   float64
+CDDISCU1         410853               94.81              22470   float64
+JOINPAI2         410171               94.66              23152   float64
+ARTHDIS2         410110               94.64              23213   float64
+LMTJOIN3         410061               94.63              23262   float64
+ARTHEXER         410000               94.62              23323   float64
+ ARTHEDU         410027               94.62              23296   float64
+LCSCTSC1         409228               94.44              24095   float64
+FEETSORE         409085               94.41              24238   float64
+DIABEDU1         409083               94.41              24240   float64
+DIABEYE1         409079               94.41              24244   float64
+DIABTYPE         409048               94.40              24275   float64
+INSULIN1         409055               94.40              24268   float64
+CHKHEMO3         409063               94.40              24260   float64
+EYEEXAM1         409070               94.40              24253   float64
+ ASPIRIN         407478               94.04              25845   float64
+MENTCIGS         407109               93.95              26214   float64
+COVIDACT         406287               93.76              27036   float64
+PCSTALK2         403971               93.23              29352   float64
+PSATEST1         403796               93.19              29527   float64
+ GUNLOAD         403146               93.04              30177   float64
+CRGVEXPT         394170               90.96              39153   float64
+   CAGEG         391398               90.32              41925   float64
+CASTHDX2         385699               89.01              47624   float64
+RCSRLTN2         384299               88.69              49024   float64
+RCSGEND1         383889               88.59              49434   float64
+_CLLCPWT         383782               88.57              49541   float64
+CAREGIV1         382512               88.27              50811   float64
+LASTSMK2         382339               88.23              50984   float64
+ _CRACE1         382113               88.18              51210   float64
+RESPSLC1         380937               87.91              52386   float64
+ACEADNED         378099               87.26              55224   float64
+ACEADSAF         378020               87.24              55303   float64
+ACEHVSEX         377906               87.21              55417   float64
+ACETTHEM         377837               87.20              55486   float64
+ACETOUCH         377769               87.18              55554   float64
+ACESWEAR         377702               87.16              55621   float64
+ACEHURT1         377636               87.15              55687   float64
+ACEPUNCH         377565               87.13              55758   float64
+ACEDIVRC         377515               87.12              55808   float64
+ACEPRISN         377478               87.11              55845   float64
+ACEDRUGS         377432               87.10              55891   float64
+ACEDRINK         377384               87.09              55939   float64
+ACEDEPRS         377283               87.07              56040   float64
+DIABAGE4         373537               86.20              59786   float64
+ ASTHNOW         368957               85.15              64366   float64
+RRATWRK2         363114               83.80              70209   float64
+LANDSEX2         362850               83.74              70473   float64
+PREGNANT         357115               82.41              76208   float64
+FALLINJ5         355584               82.06              77739   float64
+FIREARM5         352013               81.24              81310   float64
+  MSCODE         347796               80.26              85527   float64
+NUMADULT         344993               79.62              88330   float64
+STATERE1         344978               79.61              88345   float64
+NUMHHOL4         344978               79.61              88345   float64
+PVTRESD1         344978               79.61              88345   float64
+ LADULT1         344978               79.61              88345   float64
+CELPHON1         344977               79.61              88346   float64
+CTELENM1         344978               79.61              88345   float64
+MARIJAN1         344710               79.55              88613   float64
+BIRTHSEX         328093               75.72             105230   float64
+COVIDNU2         322569               74.44             110754   float64
+COVIDVA1         301427               69.56             131896   float64
+HIVTSTD3         300058               69.25             133265   float64
+  SOMALE         297533               68.66             135790   float64
+CIMEMLO1         297414               68.64             135909   float64
+RRPHYSM2         292301               67.46             141022   float64
+RRHCARE4         291990               67.38             141333   float64
+ RRTREAT         291517               67.27             141806   float64
+RRCOGNT2         291159               67.19             142164   float64
+RRCLASS3         290818               67.11             142505   float64
+_DUALCOR         289161               66.73             144162   float64
+SOFEMALE         279856               64.58             153467   float64
+SMOKDAY2         274684               63.39             158639   float64
+PREDIAB2         268133               61.88             165190   float64
+PDIABTS1         267074               61.63             166249   float64
+_FLSHOT7         262500               60.58             170823   float64
+_PNEUMO3         262500               60.58             170823   float64
+ BPMEDS1         257101               59.33             176222   float64
+FLSHTMY3         236341               54.54             196982   float64
+COVIDSM1         232306               53.61             201017   float64
+MAXDRNKS         222037               51.24             211286   float64
+DRNK3GE5         221634               51.15             211689   float64
+AVEDRNK3         221197               51.05             212126   float64
+DRNKDRI2         220318               50.84             213005   float64
+PAMIN23_         215587               49.75             217736   float64
+PAVIG23_         211868               48.89             221455   float64
+SDHSTRE1         209830               48.42             223493   float64
+ PADUR2_         209788               48.41             223535   float64
+SDHTRNSP         209057               48.25             224266   float64
+PAFREQ2_         208801               48.19             224522   float64
+SDHUTILS         208699               48.16             224624   float64
+SDHBILLS         208462               48.11             224861   float64
+ACTIN23_         208237               48.06             225086   float64
+SDHFOOD1         208194               48.05             225129   float64
+FOODSTMP         207848               47.97             225475   float64
+SDHEMPLY         207584               47.91             225739   float64
+SDLONELY         207325               47.85             225998   float64
+EMTSUPRT         207005               47.77             226318   float64
+LSATISFY         206647               47.69             226676   float64
+EXERHMM2         204566               47.21             228757   float64
+METVL22_         204566               47.21             228757   float64
+EXEROFT2         204566               47.21             228757   float64
+HEATTBCO         195409               45.10             237914   float64
+POORHLTH         181153               41.81             252170   float64
+SHINGLE2         176725               40.78             256598   float64
+_CHISPNC         156293               36.07             277030   float64
+TRNSGNDR         144180               33.27             289143   float64
+FALL12MN         140827               32.50             292496   float64
+PAMIN13_         127612               29.45             305711   float64
+_MINAC22         123271               28.45             310052   float64
+ PA3MIN_         123249               28.44             310074   float64
+_MINAC12         122491               28.27             310832   float64
+PAVIG13_         120687               27.85             312636   float64
+PA3VIGM_         118720               27.40             314603   float64
+ PADUR1_         117685               27.16             315638   float64
+PAFREQ1_         117175               27.04             316148   float64
+ACTIN13_         115906               26.75             317417   float64
+EXERHMM1         110284               25.45             323039   float64
+EXRACT22         110283               25.45             323040   float64
+EXEROFT1         110282               25.45             323041   float64
+METVL12_         110282               25.45             323041   float64
+EXRACT12         108096               24.95             325227   float64
+LANDLINE          88346               20.39             344977   float64
+CTELNUM1          88345               20.39             344978   float64
+ HHADULT          88349               20.39             344974   float64
+ CSTATE1          88355               20.39             344968   float64
+PVTRESD3          88345               20.39             344978   float64
+SAFETIME          88345               20.39             344978   float64
+CELLSEX2          88347               20.39             344976   float64
+ CADULT1          88345               20.39             344978   float64
+CELLFON5          88345               20.39             344978   float64
+ INCOME3          86623               19.99             346700   float64
+_PAINDX3          60375               13.93             372948   float64
+CHOLMED3          55651               12.84             377672   float64
+ TOLDHI3          55084               12.71             378239   float64
+_RFCHOL3          51811               11.96             381512   float64
+   _BMI5          40535                9.35             392788   float64
+_BMI5CAT          40535                9.35             392788   float64
+   WTKG3          34151                7.88             399172   float64
+COVIDPO1          32015                7.39             401308   float64
+SEATBELT          30778                7.10             402545   float64
+_AIDTST4          29613                6.83             403710   float64
+ HIVTST7          29613                6.83             403710   float64
+PNEUVAC4          28750                6.63             404573   float64
+   HTIN4          27999                6.46             405324   float64
+FLUSHOT7          27751                6.40             405572   float64
+ ALCDAY4          25444                5.87             407879   float64
+_SMOKER3          23062                5.32             410261   float64
+SMOKE100          22568                5.21             410755   float64
+    HTM4          22141                5.11             411182   float64
+ECIGNOW2          21467                4.95             411856   float64
+ USENOW3          20437                4.72             412886   float64
+DIFFALON          17860                4.12             415463   float64
+DIFFDRES          16869                3.89             416454   float64
+DIFFWALK          16146                3.73             417177   float64
+  DECIDE          15139                3.49             418184   float64
+STRFREQ_          14173                3.27             419150   float64
+   BLIND          14080                3.25             419243   float64
+    DEAF          13075                3.02             420248   float64
+ HEIGHT3          11649                2.69             421674   float64
+ WEIGHT2          10611                2.45             422712   float64
+_URBSTAT           8323                1.92             425000   float64
+_METSTAT           8323                1.92             425000   float64
+ EMPLOY1           7681                1.77             425642   float64
+CHILDREN           5092                1.18             428231   float64
+  _MICHD           4585                1.06             428738   float64
+ MARITAL           4289                0.99             429034   float64
+CVDCRHD4           4231                0.98             429092   float64
+_DRDXAR2           2560                0.59             430763   float64
+CVDINFR4           2568                0.59             430755   float64
+   EDUCA           2325                0.54             430998   float64
+_RFHYPE6           1919                0.44             431404   float64
+CHCKDNY2           1892                0.44             431431   float64
+CVDSTRK3           1474                0.34             431849   float64
+EXERANY2           1251                0.29             432072   float64
+ GENHLTH           1262                0.29             432061   float64
+VETERAN3           1219                0.28             432104   float64
+DIABETE4            984                0.23             432339   float64
+ _MRACE1            254                0.06             433069   float64
+   _RACE             86                0.02             433237   float64
+_RACEPRV             86                0.02             433237   float64
+_RACEGR3             86                0.02             433237   float64
+_RACEG21             86                0.02             433237   float64
+CPDEMO1C             45                0.01             433278   float64
+_CHLDCNT              0                0.00             433323   float64
+ _RFBMI5              0                0.00             433323   float64
+  _AGE_G              0                0.00             433323   float64
+  _AGE80              0                0.00             433323   float64
+DISPCODE              0                0.00             433323   float64
+   IYEAR              0                0.00             433323    object
+    IDAY              0                0.00             433323    object
+  IMONTH              0                0.00             433323    object
+_AGE65YR              0                0.00             433323   float64
+_AGEG5YR              0                0.00             433323   float64
+    _PSU              0                0.00             433323   float64
+   SEQNO              0                0.00             433323    object
+ _LLCPWT              0                0.00             433323   float64
+ _RFHLTH              0                0.00             433323   float64
+_DUALUSE              0                0.00             433323   float64
+_LLCPWT2              0                0.00             433323   float64
+_IMPRACE              0                0.00             433323   float64
+_WT2RAKE              0                0.00             433323   float64
+  _STRWT              0                0.00             433323   float64
+_RAWRAKE              0                0.00             433323   float64
+  QSTVER              0                0.00             433323   float64
+ QSTLANG              0                0.00             433323   float64
+  _STSTR              0                0.00             433323   float64
+RENTHOM1              8                0.00             433315   float64
+ _EDUCAG              0                0.00             433323   float64
+_INCOMG1              0                0.00             433323   float64
+_RFSMOK3              0                0.00             433323   float64
+_CURECI2              0                0.00             433323   float64
+_TOTINDA              0                0.00             433323   float64
+_HCVU653              0                0.00             433323   float64
+PRIMINS1              5                0.00             433318   float64
+MAXVO21_              0                0.00             433323   float64
+PERSDOC3              3                0.00             433320   float64
+MEDCOST1              2                0.00             433321   float64
+CHECKUP1              2                0.00             433321   float64
+CHCOCNC1              3                0.00             433320   float64
+HAVARTH4              4                0.00             433319   float64
+ADDEPEV3              3                0.00             433320   float64
+CHCCOPD3              3                0.00             433320   float64
+_PHYS14D              0                0.00             433323   float64
+_MENT14D              0                0.00             433323   float64
+_HLTHPL1              0                0.00             433323   float64
+CHCSCNC1              3                0.00             433320   float64
+ ASTHMA3              3                0.00             433320   float64
+_PA30023              0                0.00             433323   float64
+_PA300R4              0                0.00             433323   float64
+_PA150R4              0                0.00             433323   float64
+ _PACAT3              0                0.00             433323   float64
+PAMISS3_              0                0.00             433323   float64
+CHOLCHK3              3                0.00             433320   float64
+ BPHIGH6              3                0.00             433320   float64
+STRENGTH              4                0.00             433319   float64
+  FC601_              0                0.00             433323   float64
+MENTHLTH              3                0.00             433320   float64
+PHYSHLTH              3                0.00             433320   float64
+_CHOLCH3              0                0.00             433323   float64
+_PASTAE3              0                0.00             433323   float64
+  SEXVAR              0                0.00             433323   float64
+ _PAREC3              0                0.00             433323   float64
+_PASTRNG              0                0.00             433323   float64
+_HISPANC              0                0.00             433323   float64
+_ASTHMS1              0                0.00             433323   float64
+_LTASTH1              0                0.00             433323   float64
+_CASTHM1              0                0.00             433323   float64
+    _SEX              0                0.00             433323   float64
+DRNKANY6              0                0.00             433323   float64
+DROCDY4_              0                0.00             433323   float64
+_RFBING6              0                0.00             433323   float64
+_DRNKWK2              0                0.00             433323   float64
+_RFDRHV8              0                0.00             433323   float64
+   IDATE              0                0.00             433323    object
+  FMONTH              0                0.00             433323   float64
+  _STATE              0                0.00             433323   float64
+_RFSEAT2              0                0.00             433323   float64
+_RFSEAT3              0                0.00             433323   float64
+_DRNKDRV              0                0.00             433323   float64
+
+## 4. AFTER PREPROCESSING
+**TRAINING DATA SHAPE:** (202636, 26)
+**TRAINING DATA COLUMNS:** ['_AGE80', 'SEXVAR', '_BMI5', '_RFHYPE6', 'DIABETE4', 'SMOKE100', '_SMOKER3', '_MICHD', 'CVDINFR4', 'CVDCRHD4', 'TOLDHI3', 'CHOLMED3', 'CHCKDNY2', 'EXERANY2', '_TOTINDA', '_PAINDX3', 'PAMIN13_', '_PA30023', 'GENHLTH', 'PHYSHLTH', 'MENTHLTH', 'EDUCA', 'INCOME3', 'EMPLOY1', 'MARITAL', 'CVDSTRK3']
+**TRAINING DATA:**
+  Column  Missing_Count  Missing_Percentage  Non_Missing_Count Data_Type
+  _AGE80              0                 0.0             202636   float64
+  SEXVAR              0                 0.0             202636   float64
+   _BMI5              0                 0.0             202636   float64
+_RFHYPE6              0                 0.0             202636   float64
+DIABETE4              0                 0.0             202636   float64
+SMOKE100              0                 0.0             202636   float64
+_SMOKER3              0                 0.0             202636   float64
+  _MICHD              0                 0.0             202636   float64
+CVDINFR4              0                 0.0             202636   float64
+CVDCRHD4              0                 0.0             202636   float64
+ TOLDHI3              0                 0.0             202636   float64
+CHOLMED3              0                 0.0             202636   float64
+CHCKDNY2              0                 0.0             202636   float64
+EXERANY2              0                 0.0             202636   float64
+_TOTINDA              0                 0.0             202636   float64
+_PAINDX3              0                 0.0             202636   float64
+PAMIN13_              0                 0.0             202636   float64
+_PA30023              0                 0.0             202636   float64
+ GENHLTH              0                 0.0             202636   float64
+PHYSHLTH              0                 0.0             202636   float64
+MENTHLTH              0                 0.0             202636   float64
+   EDUCA              0                 0.0             202636   float64
+ INCOME3              0                 0.0             202636   float64
+ EMPLOY1              0                 0.0             202636   float64
+ MARITAL              0                 0.0             202636   float64
+CVDSTRK3              0                 0.0             202636   float64
+**TESTING DATA SHAPE:** (50655, 26)
+**TESTING DATA COLUMNS:** ['_AGE80', 'SEXVAR', '_BMI5', '_RFHYPE6', 'DIABETE4', 'SMOKE100', '_SMOKER3', '_MICHD', 'CVDINFR4', 'CVDCRHD4', 'TOLDHI3', 'CHOLMED3', 'CHCKDNY2', 'EXERANY2', '_TOTINDA', '_PAINDX3', 'PAMIN13_', '_PA30023', 'GENHLTH', 'PHYSHLTH', 'MENTHLTH', 'EDUCA', 'INCOME3', 'EMPLOY1', 'MARITAL', 'CVDSTRK3']
+**TESTING DATA:**
+  Column  Missing_Count  Missing_Percentage  Non_Missing_Count Data_Type
+  _AGE80              0                 0.0              50655   float64
+  SEXVAR              0                 0.0              50655   float64
+   _BMI5              0                 0.0              50655   float64
+_RFHYPE6              0                 0.0              50655   float64
+DIABETE4              0                 0.0              50655   float64
+SMOKE100              0                 0.0              50655   float64
+_SMOKER3              0                 0.0              50655   float64
+  _MICHD              0                 0.0              50655   float64
+CVDINFR4              0                 0.0              50655   float64
+CVDCRHD4              0                 0.0              50655   float64
+ TOLDHI3              0                 0.0              50655   float64
+CHOLMED3              0                 0.0              50655   float64
+CHCKDNY2              0                 0.0              50655   float64
+EXERANY2              0                 0.0              50655   float64
+_TOTINDA              0                 0.0              50655   float64
+_PAINDX3              0                 0.0              50655   float64
+PAMIN13_              0                 0.0              50655   float64
+_PA30023              0                 0.0              50655   float64
+ GENHLTH              0                 0.0              50655   float64
+PHYSHLTH              0                 0.0              50655   float64
+MENTHLTH              0                 0.0              50655   float64
+   EDUCA              0                 0.0              50655   float64
+ INCOME3              0                 0.0              50655   float64
+ EMPLOY1              0                 0.0              50655   float64
+ MARITAL              0                 0.0              50655   float64
+CVDSTRK3              0                 0.0              50655   float64
