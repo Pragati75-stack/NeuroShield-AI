@@ -99,26 +99,6 @@ class Preprocess:
         test_data['CVDSTRK3'] = y_test
         return train_data, test_data
 
-    def generate_report(self, data1=None, data2=None, report_file='data_preprocessing.md'):
-        if data1 is None and data2 is None:
-            a = self.missing(self.df)
-            with open(report_file, 'a') as f:
-                f.write("##3. BEFORE PREPROCESSING:\n")
-                f.write(f"**SHAPE:** {self.df.shape}\n")
-                f.write(f"**COLUMNS:** {self.df.columns.tolist()}\n")
-                f.write(f"{a}\n")
-        else:
-            a = self.missing(data1)
-            b = self.missing(data2)
-            with open(report_file, 'a') as f:
-                f.write("##4. AFTER PREPROCESSING:**\n")
-                f.write(f"**TRAINING DATA SHAPE:** {data1.shape}\n")
-                f.write(f"**TRAINING DATA COLUMNS:** {data1.columns.tolist()}\n")
-                f.write(f"**TRAINING DATA:**\n{a}\n")
-                f.write(f"**TESTING DATA SHAPE:** {data2.shape}\n")
-                f.write(f"**TESTING DATA COLUMNS:** {data2.columns.tolist()}\n")
-                f.write(f"**TESTING DATA:**\n{b}\n")
-
     def save_data(self, data, file_path):
         data.to_csv(file_path, index=False)
         print(f"Saved: {file_path}")
@@ -131,7 +111,6 @@ class Preprocess:
         te = os.getenv("test")
 
         self.clean_missing_codes()
-        self.generate_report(report_file=report_path)
 
         self.keep_necessary_columns(columns)
         self.drop_duplicate_rows()
