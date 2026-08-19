@@ -6,7 +6,7 @@
 ---
 
 ## 1.ABOUT:
-Preprocesing data is a very important step in  Machine learning 
+Preprocesing data is a very important step in Machine learning. 
  
 
 ## 2. Dataset Overview:
