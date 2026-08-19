@@ -25,3 +25,9 @@ Thumbs.db
 # Temporary files
 *.tmp
 *.temp
+# variables
+.env
+# data 
+dataset/raw/Data.XPT
+
+
