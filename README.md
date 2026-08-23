@@ -124,6 +124,8 @@ The project is being developed as both:
 
 The project uses a stroke prediction dataset containing demographic, health, and lifestyle-related information.
 
+🔗 **Dataset Source:** [Stroke Prediction Dataset — Kaggle](https://www.kaggle.com/datasets/fedesoriano/stroke-prediction-dataset)
+
 ### Target
 
 | Value | Meaning |
