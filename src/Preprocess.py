@@ -16,7 +16,7 @@ import numpy as np
 class Preprocess:
     def __init__(self):
         load_dotenv()
-        file_path = os.getenv("GET_data_path")
+        file_path = os.getenv("../dataset/raw/Data.XPT")
         self.df = pd.read_sas(file_path, format='xport')
 
     def drop_columns_with_missing_values(self, threshold=0.5):

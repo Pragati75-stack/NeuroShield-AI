@@ -1,0 +1,812 @@
+{
+  "_AGE80": {
+    "label": "Imputed Age value collapsed above 80",
+    "section": "Calculated Variables",
+    "type": "Num",
+    "sas_variable_name": "_AGE80",
+    "question": "Imputed Age value collapsed above 80 Value Value Label Frequency Percentage Weighted Percentage 18 - 24 Imputed Age 18 to 24 26,281 6.06 12.37 25 - 29 Imputed Age 25 to 29 21,255 4.91 7.38 30 - 34 Imputed Age 30 to 34 24,822 5.73 9.12 35 - 39 Imputed Age 35 to 39 27,332 6.31 7.71 40 - 44 Imputed Age 40 to 44 28,892 6.67 8.73 45 - 49 Imputed Age 45 to 49 27,789 6.41 6.71 50 - 54 Imputed Age 50 to 54 34,059 7.86 8.50 55 - 59 Imputed Age 55 to 59 35,772 8.26 7.29 60 - 64 Imputed Age 60 to 64 42,166 9.73 8.64 65 - 69 Imputed Age 65 to 69 46,398 10.71 7.00 70 - 74 Imputed Age 70 to 74 44,992 10.38 6.71 75 - 79 Imputed Age 75 to 79 34,681 8.00 4.58 80 - 99 Imputed Age 80 or older 38,884 8.97 5.25",
+    "values": [
+      {
+        "code": "18 - 24",
+        "meaning": "Imputed Age 18 to 24"
+      },
+      {
+        "code": "25 - 29",
+        "meaning": "Imputed Age 25 to 29"
+      },
+      {
+        "code": "30 - 34",
+        "meaning": "Imputed Age 30 to 34"
+      },
+      {
+        "code": "35 - 39",
+        "meaning": "Imputed Age 35 to 39"
+      },
+      {
+        "code": "40 - 44",
+        "meaning": "Imputed Age 40 to 44"
+      },
+      {
+        "code": "45 - 49",
+        "meaning": "Imputed Age 45 to 49"
+      },
+      {
+        "code": "50 - 54",
+        "meaning": "Imputed Age 50 to 54"
+      },
+      {
+        "code": "55 - 59",
+        "meaning": "Imputed Age 55 to 59"
+      },
+      {
+        "code": "60 - 64",
+        "meaning": "Imputed Age 60 to 64"
+      },
+      {
+        "code": "65 - 69",
+        "meaning": "Imputed Age 65 to 69"
+      },
+      {
+        "code": "70 - 74",
+        "meaning": "Imputed Age 70 to 74"
+      },
+      {
+        "code": "75 - 79",
+        "meaning": "Imputed Age 75 to 79"
+      },
+      {
+        "code": "80 - 99",
+        "meaning": "Imputed Age 80 or older"
+      }
+    ]
+  },
+  "SEXVAR": {
+    "label": "Sex of Respondent",
+    "section": "Respondent Sex",
+    "type": "Num",
+    "sas_variable_name": "SEXVAR",
+    "question": "Sex of Respondent Value Value Label Frequency Percentage Weighted Percentage 1 Male - Code=1 if LANDSEX2=1 or CELLSEX2=1 203,782 47.03 48.50 2 Female - Code=2 if LANDSEX2=2 or CELLSEX2=2 229,541 52.97 51.50",
+    "values": [
+      {
+        "code": "1",
+        "meaning": "Male - Code=1 if LANDSEX2=1 or CELLSEX2=1"
+      },
+      {
+        "code": "2",
+        "meaning": "Female - Code=2 if LANDSEX2=2 or CELLSEX2=2"
+      }
+    ]
+  },
+  "_BMI5": {
+    "label": "Computed body mass index",
+    "section": "Calculated Variables",
+    "type": "Num",
+    "sas_variable_name": "_BMI5",
+    "question": "Body Mass Index (BMI) Value Value Label Frequency Percentage Weighted Percentage 1 - 9999 1 or greater Notes: WTKG3/(HTM4*HTM4) (Has 2 implied decimal places) 392,788 100.00 100.00 BLANK Don't know/Refused/Missing Notes: WTKG3 = 777 or 999 or HTM4 = 777 or 999 40,535 . .",
+    "values": [
+      {
+        "code": "1 - 9999",
+        "meaning": "1 or greater Notes: WTKG3/(HTM4*HTM4) (Has 2 implied decimal places)"
+      },
+      {
+        "code": "BLANK",
+        "meaning": "Don't know/Refused/Missing Notes: WTKG3 = 777 or 999 or HTM4 = 777 or 999"
+      }
+    ]
+  },
+  "_RFHYPE6": {
+    "label": "High Blood Pressure Calculated Variable",
+    "section": "Calculated Variables",
+    "type": "Num",
+    "sas_variable_name": "_RFHYPE6",
+    "question": "Adults who have been told they have high blood pressure by a doctor, nurse, or other health professional Value Value Label Frequency Percentage Weighted Percentage 1 No Notes: BPHIGH6 = 2 or 3 or 4 255,182 58.89 65.20 2 Yes Notes: BPHIGH6 = 1 176,222 40.67 34.28 9 Don't know/Not Sure/Refused/Missing Notes: BPHIGH6 = 7 or 9 or Missing 1,919 0.44 0.52",
+    "values": [
+      {
+        "code": "1",
+        "meaning": "No Notes: BPHIGH6 = 2 or 3 or 4"
+      },
+      {
+        "code": "2",
+        "meaning": "Yes Notes: BPHIGH6 = 1"
+      },
+      {
+        "code": "9",
+        "meaning": "Don't know/Not Sure/Refused/Missing Notes: BPHIGH6 = 7 or 9 or Missing"
+      }
+    ]
+  },
+  "DIABETE4": {
+    "label": "(Ever told) you had diabetes",
+    "section": "Chronic Health Conditions",
+    "type": "Num",
+    "sas_variable_name": "DIABETE4",
+    "question": "(Ever told) (you had) diabetes? (If Yes - and respondent is female, ask Was this only when you were pregnant? If Respondent says pre-diabetes or borderline diabetes, use response code 4.) Value Value Label Frequency Percentage Weighted Percentage 1 Yes 59,786 13.80 12.04 2 Yes, but female told only during pregnancy - Go to Section 08.01 AGE 3,253 0.75 0.93 3 No - Go to Section 08.01 AGE 358,706 82.78 84.16 4 No, pre-diabetes or borderline diabetes - Go to Section 08.01 AGE 10,594 2.44 2.58 7 Don't know/Not Sure - Go to Section 08.01 AGE 683 0.16 0.21 9 Refused - Go to Section 08.01 AGE 296 0.07 0.08 BLANK Not asked or Missing 5 . .",
+    "values": [
+      {
+        "code": "1",
+        "meaning": "Yes"
+      },
+      {
+        "code": "2",
+        "meaning": "Yes, but female told only during pregnancy - Go to Section 08.01 AGE"
+      },
+      {
+        "code": "3",
+        "meaning": "No - Go to Section 08.01 AGE"
+      },
+      {
+        "code": "4",
+        "meaning": "No, pre-diabetes or borderline diabetes - Go to Section 08.01 AGE"
+      },
+      {
+        "code": "7",
+        "meaning": "Don't know/Not Sure - Go to Section 08.01 AGE"
+      },
+      {
+        "code": "9",
+        "meaning": "Refused - Go to Section 08.01 AGE"
+      },
+      {
+        "code": "BLANK",
+        "meaning": "Not asked or Missing"
+      }
+    ]
+  },
+  "SMOKE100": {
+    "label": "Smoked at Least 100 Cigarettes",
+    "section": "Tobacco Use",
+    "type": "Num",
+    "sas_variable_name": "SMOKE100",
+    "question": "Have you smoked at least 100 cigarettes in your entire life? [Note: 5 packs = 100 cigarettes] Value Value Label Frequency Percentage Weighted Percentage 1 Yes 158,774 38.38 34.86 2 No - Go to Section 12.03 USENOW3 251,981 60.92 64.47 7 Don't know/Not Sure - Go to Section 12.03 USENOW3 2,251 0.54 0.52 9 Refused - Go to Section 12.03 USENOW3 643 0.16 0.16 BLANK Not asked or Missing 19,674 . .",
+    "values": [
+      {
+        "code": "1",
+        "meaning": "Yes"
+      },
+      {
+        "code": "2",
+        "meaning": "No - Go to Section 12.03 USENOW3"
+      },
+      {
+        "code": "7",
+        "meaning": "Don't know/Not Sure - Go to Section 12.03 USENOW3"
+      },
+      {
+        "code": "9",
+        "meaning": "Refused - Go to Section 12.03 USENOW3"
+      },
+      {
+        "code": "BLANK",
+        "meaning": "Not asked or Missing"
+      }
+    ]
+  },
+  "_SMOKER3": {
+    "label": "Computed Smoking Status",
+    "section": "Calculated Variables",
+    "type": "Num",
+    "sas_variable_name": "_SMOKER3",
+    "question": "Four-level smoker status: Everyday smoker, Someday smoker, Former smoker, Non-smoker Value Value Label Frequency Percentage Weighted Percentage 1 Current smoker - now smokes every day Notes: SMOKE100 = 1 and SMOKEDAY = 1 31,770 7.33 7.24 2 Current smoker - now smokes some days Notes: SMOKE100 = 1 and SMOKEDAY = 2 13,376 3.09 3.44 3 Former smoker Notes: SMOKE100 = 1 and SMOKEDAY = 3 113,134 26.11 22.15 4 Never smoked Notes: SMOKE100 = 2 251,981 58.15 60.93 9 Don't know/Refused/Missing Notes: SMOKE100 = 1 and SMOKEDAY = 9 or SMOKE100 = 7 or 9 or Missing 23,062 5.32 6.25",
+    "values": [
+      {
+        "code": "1",
+        "meaning": "Current smoker - now smokes every day Notes: SMOKE100 = 1 and SMOKEDAY = 1"
+      },
+      {
+        "code": "2",
+        "meaning": "Current smoker - now smokes some days Notes: SMOKE100 = 1 and SMOKEDAY = 2"
+      },
+      {
+        "code": "3",
+        "meaning": "Former smoker Notes: SMOKE100 = 1 and SMOKEDAY = 3"
+      },
+      {
+        "code": "4",
+        "meaning": "Never smoked Notes: SMOKE100 = 2"
+      },
+      {
+        "code": "9",
+        "meaning": "Don't know/Refused/Missing Notes: SMOKE100 = 1 and SMOKEDAY = 9 or SMOKE100 = 7 or 9 or Missing"
+      }
+    ]
+  },
+  "_MICHD": {
+    "label": "Ever had CHD or MI",
+    "section": "Calculated Variables",
+    "type": "Num",
+    "sas_variable_name": "_MICHD",
+    "question": "Respondents that have ever reported having coronary heart disease (CHD) or myocardial infarction (MI) Value Value Label Frequency Percentage Weighted Percentage 1 Reported having MI or CHD Notes: CVDINFR4=1 OR CVDCRHD4=1 36,311 8.47 6.47 2 Did not report having MI or CHD Notes: CVDINFR4=2 AND CVDCRHD4=2 392,427 91.53 93.53 BLANK Not asked or Missing Notes: CVDINFR4=7, 9 or Missing OR CVDCRHD4=7, 9, or Missing 4,585 . .",
+    "values": [
+      {
+        "code": "1",
+        "meaning": "Reported having MI or CHD Notes: CVDINFR4=1 OR CVDCRHD4=1"
+      },
+      {
+        "code": "2",
+        "meaning": "Did not report having MI or CHD Notes: CVDINFR4=2 AND CVDCRHD4=2"
+      },
+      {
+        "code": "BLANK",
+        "meaning": "Not asked or Missing Notes: CVDINFR4=7, 9 or Missing OR CVDCRHD4=7, 9, or Missing"
+      }
+    ]
+  },
+  "CVDINFR4": {
+    "label": "Ever Diagnosed with Heart Attack",
+    "section": "Chronic Health Conditions",
+    "type": "Num",
+    "sas_variable_name": "CVDINFR4",
+    "question": "(Ever told) you had a heart attack, also called a myocardial infarction? Value Value Label Frequency Percentage Weighted Percentage 1 Yes 23,451 5.41 4.16 2 No 407,304 94.00 95.17 7 Don't know/Not sure 2,314 0.53 0.61 9 Refused 251 0.06 0.05 BLANK Not asked or Missing 3 . .",
+    "values": [
+      {
+        "code": "1",
+        "meaning": "Yes"
+      },
+      {
+        "code": "2",
+        "meaning": "No"
+      },
+      {
+        "code": "7",
+        "meaning": "Don't know/Not sure"
+      },
+      {
+        "code": "9",
+        "meaning": "Refused"
+      },
+      {
+        "code": "BLANK",
+        "meaning": "Not asked or Missing"
+      }
+    ]
+  },
+  "CVDCRHD4": {
+    "label": "Ever Diagnosed with Angina or Coronary Heart Disease",
+    "section": "Chronic Health Conditions",
+    "type": "Num",
+    "sas_variable_name": "CVDCRHD4",
+    "question": "(Ever told) (you had) angina or coronary heart disease? Value Value Label Frequency Percentage Weighted Percentage 1 Yes 23,454 5.41 4.03 2 No 405,638 93.61 95.15 7 Don't know/Not sure 3,936 0.91 0.76 9 Refused 292 0.07 0.06 BLANK Not asked or Missing 3 . .",
+    "values": [
+      {
+        "code": "1",
+        "meaning": "Yes"
+      },
+      {
+        "code": "2",
+        "meaning": "No"
+      },
+      {
+        "code": "7",
+        "meaning": "Don't know/Not sure"
+      },
+      {
+        "code": "9",
+        "meaning": "Refused"
+      },
+      {
+        "code": "BLANK",
+        "meaning": "Not asked or Missing"
+      }
+    ]
+  },
+  "TOLDHI3": {
+    "label": "Ever Told Cholesterol Is High",
+    "section": "Cholesterol Awareness",
+    "type": "Num",
+    "sas_variable_name": "TOLDHI3",
+    "question": "Have you ever been told by a doctor, nurse or other health professional that your cholesterol is high? Value Value Label Frequency Percentage Weighted Percentage 1 Yes 158,906 41.65 37.20 2 No 219,333 57.49 61.96 7 Don't know/Not Sure 2,868 0.75 0.71 9 Refused 404 0.11 0.12 BLANK Not asked or Missing Notes: Section 06.01, CHOLCHK3, is coded 1, 7, 9, or Missing 51,812 . .",
+    "values": [
+      {
+        "code": "1",
+        "meaning": "Yes"
+      },
+      {
+        "code": "2",
+        "meaning": "No"
+      },
+      {
+        "code": "7",
+        "meaning": "Don't know/Not Sure"
+      },
+      {
+        "code": "9",
+        "meaning": "Refused"
+      },
+      {
+        "code": "BLANK",
+        "meaning": "Not asked or Missing Notes: Section 06.01, CHOLCHK3, is coded 1, 7, 9, or Missing"
+      }
+    ]
+  },
+  "CHOLMED3": {
+    "label": "Currently taking medicine for high cholesterol",
+    "section": "Cholesterol Awareness",
+    "type": "Num",
+    "sas_variable_name": "CHOLMED3",
+    "question": "Are you currently taking medicine prescribed by your doctor or other health professional for your cholesterol? Value Value Label Frequency Percentage Weighted Percentage 1 Yes 122,699 32.30 26.43 2 No 254,973 67.12 73.14 7 Don't know/Not Sure 1,527 0.40 0.29 9 Refused 684 0.18 0.14 BLANK Not asked or Missing Notes: Section 06.01, CHOLCHK3, is coded 1, 7, 9, or Missing; 53,440 . .",
+    "values": [
+      {
+        "code": "1",
+        "meaning": "Yes"
+      },
+      {
+        "code": "2",
+        "meaning": "No"
+      },
+      {
+        "code": "7",
+        "meaning": "Don't know/Not Sure"
+      },
+      {
+        "code": "9",
+        "meaning": "Refused"
+      },
+      {
+        "code": "BLANK",
+        "meaning": "Not asked or Missing Notes: Section 06.01, CHOLCHK3, is coded 1, 7, 9, or Missing;"
+      }
+    ]
+  },
+  "CHCKDNY2": {
+    "label": "Ever told you have kidney disease?",
+    "section": "Chronic Health Conditions",
+    "type": "Num",
+    "sas_variable_name": "CHCKDNY2",
+    "question": "Not including kidney stones, bladder infection or incontinence, were you ever told you had kidney disease? Value Value Label Frequency Percentage Weighted Percentage 1 Yes 20,555 4.74 3.81 2 No 410,876 94.82 95.79 7 Don't know / Not sure 1,622 0.37 0.33 9 Refused 267 0.06 0.06 BLANK Not asked or Missing 3 . .",
+    "values": [
+      {
+        "code": "1",
+        "meaning": "Yes"
+      },
+      {
+        "code": "2",
+        "meaning": "No"
+      },
+      {
+        "code": "7",
+        "meaning": "Don't know / Not sure"
+      },
+      {
+        "code": "9",
+        "meaning": "Refused"
+      },
+      {
+        "code": "BLANK",
+        "meaning": "Not asked or Missing"
+      }
+    ]
+  },
+  "EXERANY2": {
+    "label": "Exercise in Past 30 Days",
+    "section": "Exercise (Physical Activity)",
+    "type": "Num",
+    "sas_variable_name": "EXERANY2",
+    "question": "During the past month, other than your regular job, did you participate in any physical activities or exercises such as running, calisthenics, golf, gardening, or walking for exercise? Value Value Label Frequency Percentage Weighted Percentage 1 Yes 325,227 75.05 75.03 2 No - Go to Section 04.08 STRENGTH 106,845 24.66 24.71 7 Don't know/Not Sure - Go to Section 04.08 STRENGTH 927 0.21 0.19 9 Refused - Go to Section 04.08 STRENGTH 322 0.07 0.07 BLANK Not asked or Missing 2 . .",
+    "values": [
+      {
+        "code": "1",
+        "meaning": "Yes"
+      },
+      {
+        "code": "2",
+        "meaning": "No - Go to Section 04.08 STRENGTH"
+      },
+      {
+        "code": "7",
+        "meaning": "Don't know/Not Sure - Go to Section 04.08 STRENGTH"
+      },
+      {
+        "code": "9",
+        "meaning": "Refused - Go to Section 04.08 STRENGTH"
+      },
+      {
+        "code": "BLANK",
+        "meaning": "Not asked or Missing"
+      }
+    ]
+  },
+  "_TOTINDA": {
+    "label": "Leisure Time Physical Activity Calculated Variable",
+    "section": "Calculated Variables",
+    "type": "Num",
+    "sas_variable_name": "_TOTINDA",
+    "question": "Adults who reported doing physical activity or exercise during the past 30 days other than their regular job Value Value Label Frequency Percentage Weighted Percentage 1 Had physical activity or exercise Notes: EXERANY2 = 1 325,227 75.05 75.03 2 No physical activity or exercise in last 30 days Notes: EXERANY2 = 2 106,845 24.66 24.71 9 Don't know/Refused/Missing Notes: EXERANY2 = 7 or 9 or Missing 1,251 0.29 0.26",
+    "values": [
+      {
+        "code": "1",
+        "meaning": "Had physical activity or exercise Notes: EXERANY2 = 1"
+      },
+      {
+        "code": "2",
+        "meaning": "No physical activity or exercise in last 30 days Notes: EXERANY2 = 2"
+      },
+      {
+        "code": "9",
+        "meaning": "Don't know/Refused/Missing Notes: EXERANY2 = 7 or 9 or Missing"
+      }
+    ]
+  },
+  "_PAINDX3": {
+    "label": "Physical Activity Index",
+    "section": "Calculated Variables",
+    "type": "Num",
+    "sas_variable_name": "_PAINDX3",
+    "question": "Physical Activity Index Value Value Label Frequency Percentage Weighted Percentage 1 Meet Aerobic Recommendations 230,855 53.28 50.86 2 Did Not Meet Aerobic Recommendations 142,093 32.79 34.37 9 Don't know/Not Sure/Refused/Missing 60,375 13.93 14.77",
+    "values": [
+      {
+        "code": "1",
+        "meaning": "Meet Aerobic Recommendations"
+      },
+      {
+        "code": "2",
+        "meaning": "Did Not Meet Aerobic Recommendations"
+      },
+      {
+        "code": "9",
+        "meaning": "Don't know/Not Sure/Refused/Missing"
+      }
+    ]
+  },
+  "PAMIN13_": {
+    "label": "Minutes of Physical Activity per week for First Activity",
+    "section": "Calculated Variables",
+    "type": "Num",
+    "sas_variable_name": "PAMIN13_",
+    "question": "Minutes of Physical Activity per week for First Activity Value Value Label Frequency Percentage Weighted Percentage 0 - 99999 Minutes of Activity per week 305,709 100.00 100.00 118602 2 0.00 0.00 BLANK Not asked or Missing 127,612 . .",
+    "values": [
+      {
+        "code": "0 - 99999",
+        "meaning": "Minutes of Activity per week"
+      },
+      {
+        "code": "BLANK",
+        "meaning": "Not asked or Missing"
+      }
+    ]
+  },
+  "_PA30023": {
+    "label": "300 Minute Physical Activity 2-Level Calculated Variable",
+    "section": "Calculated Variables",
+    "type": "Num",
+    "sas_variable_name": "_PA30023",
+    "question": "Adults that participated in greater than 300 minutes (or vigorous equivalent minutes) of physical activity per week (2-levels). Value Value Label Frequency Percentage Weighted Percentage 1 301+ minutes (or vigorous equivalent minutes) of physical activity 156,975 36.23 33.01 2 0-300 minutes (or vigorous equivalent minutes) of physical activity 191,367 44.16 46.32 9 Don't know/Not Sure/Refused/Missing 84,981 19.61 20.67",
+    "values": [
+      {
+        "code": "1",
+        "meaning": "301+ minutes (or vigorous equivalent minutes) of physical activity"
+      },
+      {
+        "code": "2",
+        "meaning": "0-300 minutes (or vigorous equivalent minutes) of physical activity"
+      },
+      {
+        "code": "9",
+        "meaning": "Don't know/Not Sure/Refused/Missing"
+      }
+    ]
+  },
+  "GENHLTH": {
+    "label": "General Health",
+    "section": "Health Status",
+    "type": "Num",
+    "sas_variable_name": "GENHLTH",
+    "question": "Would you say that in general your health is: Value Value Label Frequency Percentage Weighted Percentage 1 Excellent 63,410 14.63 15.83 2 Very good 142,115 32.80 31.00 3 Good 144,209 33.28 33.54 4 Fair 61,955 14.30 14.87 5 Poor 20,372 4.70 4.44 7 Don't know/Not Sure 897 0.21 0.22 9 Refused 361 0.08 0.09 BLANK Not asked or Missing 4 . .",
+    "values": [
+      {
+        "code": "1",
+        "meaning": "Excellent"
+      },
+      {
+        "code": "2",
+        "meaning": "Very good"
+      },
+      {
+        "code": "3",
+        "meaning": "Good"
+      },
+      {
+        "code": "4",
+        "meaning": "Fair"
+      },
+      {
+        "code": "5",
+        "meaning": "Poor"
+      },
+      {
+        "code": "7",
+        "meaning": "Don't know/Not Sure"
+      },
+      {
+        "code": "9",
+        "meaning": "Refused"
+      },
+      {
+        "code": "BLANK",
+        "meaning": "Not asked or Missing"
+      }
+    ]
+  },
+  "PHYSHLTH": {
+    "label": "Number of Days Physical Health Not Good",
+    "section": "Healthy Days",
+    "type": "Num",
+    "sas_variable_name": "PHYSHLTH",
+    "question": "Now thinking about your physical health, which includes physical illness and injury, for how many days during the past 30 days was your physical health not good? Value Value Label Frequency Percentage Weighted Percentage 1 - 30 Number of days 165,973 38.30 37.71 88 None 256,565 59.21 59.64 77 Don't know/Not sure 9,072 2.09 2.23 99 Refused 1,710 0.39 0.43 BLANK Not asked or Missing 3 . .",
+    "values": [
+      {
+        "code": "1 - 30",
+        "meaning": "Number of days"
+      },
+      {
+        "code": "88",
+        "meaning": "None"
+      },
+      {
+        "code": "77",
+        "meaning": "Don't know/Not sure"
+      },
+      {
+        "code": "99",
+        "meaning": "Refused"
+      },
+      {
+        "code": "BLANK",
+        "meaning": "Not asked or Missing"
+      }
+    ]
+  },
+  "MENTHLTH": {
+    "label": "Number of Days Mental Health Not Good",
+    "section": "Healthy Days",
+    "type": "Num",
+    "sas_variable_name": "MENTHLTH",
+    "question": "Now thinking about your mental health, which includes stress, depression, and problems with emotions, for how many days during the past 30 days was your mental health not good? Value Value Label Frequency Percentage Weighted Percentage 1 - 30 Number of days Notes: _ _ Number of days 168,189 38.81 42.10 88 None 257,026 59.32 55.80 77 Don't know/Not sure 5,992 1.38 1.54 99 Refused 2,113 0.49 0.55 BLANK Not asked or Missing 3 . .",
+    "values": [
+      {
+        "code": "1 - 30",
+        "meaning": "Number of days Notes: _ _ Number of days"
+      },
+      {
+        "code": "88",
+        "meaning": "None"
+      },
+      {
+        "code": "77",
+        "meaning": "Don't know/Not sure"
+      },
+      {
+        "code": "99",
+        "meaning": "Refused"
+      },
+      {
+        "code": "BLANK",
+        "meaning": "Not asked or Missing"
+      }
+    ]
+  },
+  "EDUCA": {
+    "label": "Education Level",
+    "section": "Demographics",
+    "type": "Num",
+    "sas_variable_name": "EDUCA",
+    "question": "What is the highest grade or year of school you completed? Value Value Label Frequency Percentage Weighted Percentage 1 Never attended school or only kindergarten 687 0.16 0.34 2 Grades 1 through 8 (Elementary) 8,324 1.92 4.01 3 Grades 9 through 11 (Some high school) 16,161 3.73 7.22 4 Grade 12 or GED (High school graduate) 106,613 24.60 27.04 5 College 1 year to 3 years (Some college or technical school) 114,346 26.39 29.90 6 College 4 years or more (College graduate) 184,867 42.66 30.90 9 Refused 2,316 0.53 0.59 BLANK Not asked or Missing 9 . .",
+    "values": [
+      {
+        "code": "1",
+        "meaning": "Never attended school or only kindergarten"
+      },
+      {
+        "code": "2",
+        "meaning": "Grades 1 through 8 (Elementary)"
+      },
+      {
+        "code": "3",
+        "meaning": "Grades 9 through 11 (Some high school)"
+      },
+      {
+        "code": "4",
+        "meaning": "Grade 12 or GED (High school graduate)"
+      },
+      {
+        "code": "5",
+        "meaning": "College 1 year to 3 years (Some college or technical school)"
+      },
+      {
+        "code": "6",
+        "meaning": "College 4 years or more (College graduate)"
+      },
+      {
+        "code": "9",
+        "meaning": "Refused"
+      },
+      {
+        "code": "BLANK",
+        "meaning": "Not asked or Missing"
+      }
+    ]
+  },
+  "INCOME3": {
+    "label": "Income Level",
+    "section": "Demographics",
+    "type": "Num",
+    "sas_variable_name": "INCOME3",
+    "question": "Is your annual household income from all sources: (If respondent refuses at any income level, code Refused.) Value Value Label Frequency Percentage Weighted Percentage 1 Less than $10,000 9,280 2.18 2.76 2 Less than $15,000 ($10,000 to < $15,000) 9,907 2.33 2.24 3 Less than $20,000 ($15,000 to < $20,000) 12,867 3.03 3.24 4 Less than $25,000 ($20,000 to < $25,000) 18,202 4.28 4.47 5 Less than $35,000 ($25,000 to < $35,000) 38,508 9.06 9.09 6 Less than $50,000 ($35,000 to < $50,000) 47,502 11.17 10.66 7 Less than $75,000 ($50,000 to < $75,000) 57,896 13.61 12.32 8 Less than $100,000 ($75,000 to < $100,000) 49,131 11.55 10.48 9 Less than $150,000 ($100,000 to < $150,000) 52,284 12.29 11.92 10 Less than $200,000 ($150,000 to < $200,000) 24,353 5.73 5.97 11 $200,000 or more 26,770 6.30 6.94 77 Don't know/Not sure 36,316 8.54 10.60 99 Refused 42,232 9.93 9.33 BLANK Not asked or Missing 8,075 . .",
+    "values": [
+      {
+        "code": "1",
+        "meaning": "Less than $10,000"
+      },
+      {
+        "code": "2",
+        "meaning": "Less than $15,000 ($10,000 to < $15,000)"
+      },
+      {
+        "code": "3",
+        "meaning": "Less than $20,000 ($15,000 to < $20,000)"
+      },
+      {
+        "code": "4",
+        "meaning": "Less than $25,000 ($20,000 to < $25,000)"
+      },
+      {
+        "code": "5",
+        "meaning": "Less than $35,000 ($25,000 to < $35,000)"
+      },
+      {
+        "code": "6",
+        "meaning": "Less than $50,000 ($35,000 to < $50,000)"
+      },
+      {
+        "code": "7",
+        "meaning": "Less than $75,000 ($50,000 to < $75,000)"
+      },
+      {
+        "code": "8",
+        "meaning": "Less than $100,000 ($75,000 to < $100,000)"
+      },
+      {
+        "code": "9",
+        "meaning": "Less than $150,000 ($100,000 to < $150,000)"
+      },
+      {
+        "code": "10",
+        "meaning": "Less than $200,000 ($150,000 to < $200,000)"
+      },
+      {
+        "code": "11",
+        "meaning": "$200,000 or more"
+      },
+      {
+        "code": "77",
+        "meaning": "Don't know/Not sure"
+      },
+      {
+        "code": "99",
+        "meaning": "Refused"
+      },
+      {
+        "code": "BLANK",
+        "meaning": "Not asked or Missing"
+      }
+    ]
+  },
+  "EMPLOY1": {
+    "label": "Employment Status",
+    "section": "Demographics",
+    "type": "Num",
+    "sas_variable_name": "EMPLOY1",
+    "question": "Are you currently? Value Value Label Frequency Percentage Weighted Percentage 1 Employed for wages 177,871 41.33 46.69 2 Self-employed 37,923 8.81 9.53 3 Out of work for 1 year or more 7,668 1.78 2.40 4 Out of work for less than 1 year 8,976 2.09 2.99 5 A homemaker 17,521 4.07 5.17 6 A student 10,244 2.38 4.78 7 Retired 139,949 32.52 20.78 8 Unable to work 25,490 5.92 6.25 9 Refused 4,713 1.10 1.41 BLANK Not asked or Missing 2,968 . .",
+    "values": [
+      {
+        "code": "1",
+        "meaning": "Employed for wages"
+      },
+      {
+        "code": "2",
+        "meaning": "Self-employed"
+      },
+      {
+        "code": "3",
+        "meaning": "Out of work for 1 year or more"
+      },
+      {
+        "code": "4",
+        "meaning": "Out of work for less than 1 year"
+      },
+      {
+        "code": "5",
+        "meaning": "A homemaker"
+      },
+      {
+        "code": "6",
+        "meaning": "A student"
+      },
+      {
+        "code": "7",
+        "meaning": "Retired"
+      },
+      {
+        "code": "8",
+        "meaning": "Unable to work"
+      },
+      {
+        "code": "9",
+        "meaning": "Refused"
+      },
+      {
+        "code": "BLANK",
+        "meaning": "Not asked or Missing"
+      }
+    ]
+  },
+  "MARITAL": {
+    "label": "Marital Status",
+    "section": "Demographics",
+    "type": "Num",
+    "sas_variable_name": "MARITAL",
+    "question": "Are you: (marital status) Value Value Label Frequency Percentage Weighted Percentage 1 Married 222,210 51.28 49.18 2 Divorced 55,007 12.69 9.99 3 Widowed 47,225 10.90 6.97 4 Separated 8,316 1.92 2.45 5 Never married 77,124 17.80 24.66 6 A member of an unmarried couple 19,152 4.42 5.62 9 Refused 4,282 0.99 1.13 BLANK Not asked or Missing 7 . .",
+    "values": [
+      {
+        "code": "1",
+        "meaning": "Married"
+      },
+      {
+        "code": "2",
+        "meaning": "Divorced"
+      },
+      {
+        "code": "3",
+        "meaning": "Widowed"
+      },
+      {
+        "code": "4",
+        "meaning": "Separated"
+      },
+      {
+        "code": "5",
+        "meaning": "Never married"
+      },
+      {
+        "code": "6",
+        "meaning": "A member of an unmarried couple"
+      },
+      {
+        "code": "9",
+        "meaning": "Refused"
+      },
+      {
+        "code": "BLANK",
+        "meaning": "Not asked or Missing"
+      }
+    ]
+  },
+  "CVDSTRK3": {
+    "label": "Ever Diagnosed with a Stroke",
+    "section": "Chronic Health Conditions",
+    "type": "Num",
+    "sas_variable_name": "CVDSTRK3",
+    "question": "(Ever told) (you had) a stroke. Value Value Label Frequency Percentage Weighted Percentage 1 Yes 18,350 4.23 3.37 2 No 413,499 95.43 96.30 7 Don't know/Not sure 1,212 0.28 0.26 9 Refused 258 0.06 0.06 BLANK Not asked or Missing 4 . .",
+    "values": [
+      {
+        "code": "1",
+        "meaning": "Yes"
+      },
+      {
+        "code": "2",
+        "meaning": "No"
+      },
+      {
+        "code": "7",
+        "meaning": "Don't know/Not sure"
+      },
+      {
+        "code": "9",
+        "meaning": "Refused"
+      },
+      {
+        "code": "BLANK",
+        "meaning": "Not asked or Missing"
+      }
+    ]
+  }
+}
