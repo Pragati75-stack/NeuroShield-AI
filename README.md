@@ -236,7 +236,7 @@ cd NeuroShield-AI
 | Data Preprocessing | ✅ |
 | Exploratory Data Analysis | ✅ |
 | ML Model Training | ✅ |
-| ML Model Evaluation | 🔄 |
+| ML Model Evaluation | ✅ |
 | Deep Learning | ⏳ |
 | ML vs. DL Comparison | ⏳ |
 | Final Model Selection | ⏳ |
