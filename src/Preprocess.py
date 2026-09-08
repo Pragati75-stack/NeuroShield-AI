@@ -1,153 +1,251 @@
 """
-remeber learnings from notebook and implement here 
-1. dont impute before train test split else data leakage will happen
-2. dont drop all rows with missing values in the entire dataset, instead drop columns with too many missing values(>50% missing values).
-3. drop all rows with missing values for target variable
-4. prepare a before and after report in data_preprocessing.md file from here using return and other things and finally using a function to write  
+#### Steps
+1. load data and interpretation. 
+2. Convert SAS variable names into question-based column names and values in as as ber value label -2 
+3. Feature selection
+4. interpret meaning of values and convert them in nan if they are not uninformative or remove the parts that are just clutter
+5. Remove row that contains nan value for target variable for cleaning 
+6. drop duplicates
+7. Train test split to prevent data leak
+8. impute numerical data through median
+9. impute categorical data through mode 
+10. select columns 
+11. set the order
+12. define ordinal encoder
+13. define column transformer 
+14. transform data and save transformer 
+15. store transformed data and data just before transformation 
 """
-from dotenv import load_dotenv
-import os
 import pandas as pd
-from sklearn.impute import SimpleImputer
-from sklearn.model_selection import train_test_split
+import json
+from sklearn.preprocessing import OneHotEncoder, OrdinalEncoder
 import numpy as np
-
+from sklearn.compose import ColumnTransformer
+from sklearn.model_selection import train_test_split
+from streamlit import columns
+from sklearn.impute import SimpleImputer
+import joblib
 
 class Preprocess:
     def __init__(self):
-        load_dotenv()
-        file_path = os.getenv("GET_data_path")
-        self.df = pd.read_sas(file_path, format='xport')
+        file_path = "../dataset/processed/decoded_data.csv"
+        file_path_json= "../dataset/Document/codebook.json"
+        self.df = pd.read_csv(file_path)
+        with open(file_path_json, 'r') as f:
+            self.codebook = json.load(f)
+    def sas_to_question_columns(self,selected_columns):
+        """
+           Convert SAS variable names into question-based column names.
+           Example:
+           CVDSTRK3 -> Ever_told_you_had_a_stroke
+           _BMI5    -> Body_Mass_Index
+        """
+        # Create SAS variable -> question lookup
+        sas_lookup = {
+            variable["sas_variable_name"].strip(): variable.get("question", "").strip()
+            for variable in self.codebook
+            if variable.get("sas_variable_name")
+            }
 
-    def drop_columns_with_missing_values(self, threshold=0.5):
-        missing_ratio = self.df.isnull().mean()
-        columns_to_drop = missing_ratio[missing_ratio > threshold].index
-        self.df.drop(columns=columns_to_drop, inplace=True)
+        renamed_columns = {}
 
-    def drop_rows_with_missing_target(self, target_column):
-        self.df.dropna(subset=[target_column], inplace=True)
+        for sas_name in selected_columns:
 
-    def keep_necessary_columns(self, columns):
-        self.df = self.df[columns]
+            question = sas_lookup.get(sas_name)
 
-    def drop_duplicate_rows(self):
-        self.df.drop_duplicates(keep='first', inplace=True)
+            if question:
+            # Replace spaces with underscores
+                new_name = "_".join(question.split())
 
-    def drop_rows_with_missing_values(self, data):
-        data.dropna(inplace=True)
-        return data
+                renamed_columns[sas_name] = new_name
 
-    def train_test_split(self, target_column, test_size=0.2, random_state=42):
-        X = self.df.drop(columns=[target_column])
-        y = self.df[target_column]
-        X_train, X_test, y_train, y_test = train_test_split(
+            else:
+            # Keep original name if not found
+                renamed_columns[sas_name] = sas_name
+
+        return renamed_columns
+    def Feature_selection(self, columns):
+        self.r_columns = self.sas_to_question_columns(columns)
+        available_columns = [value for key, value in self.r_columns.items() if value in self.df.columns]
+        self.df_selected = self.df[available_columns].copy()
+        self.df_selected["Body_Mass_Index_(BMI)"]= self.df_selected["Body_Mass_Index_(BMI)"]/100
+        
+    def decode_values(self, columns):
+        text_columns = self.df_selected.select_dtypes(include="object").columns
+        for col in text_columns:
+            self.df_selected[col] = (
+                self.df_selected[col]
+                .str.split(" - ", n=1).str[0]
+                .str.split(" Notes", n=1).str[0]
+                .str.strip()
+                .replace({
+                    "Don't know/Not sure": np.nan,
+                    "Refused": np.nan,
+                    "Don't know/Refused/Missing Notes: SMOKE100 = 1 and SMOKEDAY = 9 or SMOKE100 = 7 or 9 or Missing": np.nan,
+                    "Don't know/Refused/Missing": np.nan,
+                    "Don't know/Not Sure/Refused/Missing": np.nan,
+                    "Don't know/Not Sure": np.nan
+            
+                })
+            )
+        self.df_selected["Now_thinking_about_your_mental_health,_which_includes_stress,_depression,_and_problems_with_emotions,_for_how_many_days_during_the_past_30_days_was_your_mental_health_not_good?"] = self.df_selected["Now_thinking_about_your_mental_health,_which_includes_stress,_depression,_and_problems_with_emotions,_for_how_many_days_during_the_past_30_days_was_your_mental_health_not_good?"].astype(float)
+        self.df_selected["Now_thinking_about_your_physical_health,_which_includes_physical_illness_and_injury,_for_how_many_days_during_the_past_30_days_was_your_physical_health_not_good?"]= self.df_selected["Now_thinking_about_your_physical_health,_which_includes_physical_illness_and_injury,_for_how_many_days_during_the_past_30_days_was_your_physical_health_not_good?"].astype(float)  
+        self.df_selected.dropna(subset=["(Ever_told)_(you_had)_a_stroke."], inplace=True)
+        self.df_selected.drop_duplicates(keep='first', inplace=True)
+
+    def Train_test_split(self, target_column, test_size=0.2, random_state=42):
+        X = self.df_selected.drop(columns=[target_column])
+        y = self.y = self.df_selected[target_column].map({
+            "No": 0,
+            "Yes": 1
+        })
+        self.X_train, self.X_test, self.y_train, self.y_test = train_test_split(
             X, y, test_size=test_size, random_state=random_state
         )
-        return X_train, X_test, y_train, y_test
-
-    def impute_missing_values(self, numeric_columns, X_train, X_test):
+    def impute_missing_values(self, numeric_columns):
         imputer = SimpleImputer(strategy='median')
-        X_train[numeric_columns] = imputer.fit_transform(X_train[numeric_columns])
-        X_test[numeric_columns] = imputer.transform(X_test[numeric_columns])
-        return X_train, X_test
+        col_name = []
 
-    def clean_missing_codes(self):
-        """Replace sentinel 'missing' codes (7/9/77/99 etc.) with NaN."""
-        missing_codes = {
-            'CVDSTRK3': [7, 9],
-            '_RFHYPE6': [7, 9],
-            'DIABETE4': [7, 9],
-            'SMOKE100': [7, 9],
-            '_SMOKER3': [9],
-            '_MICHD': [9],
-            'CVDINFR4': [7, 9],
-            'CVDCRHD4': [7, 9],
-            'TOLDHI3': [7, 9],
-            'CHOLMED3': [7, 9],
-            'CHCKDNY2': [7, 9],
-            'PREDIAB2': [7, 9],
-            'EXERANY2': [7, 9],
-            '_PAINDX3': [9],
-            'GENHLTH': [7, 9],
-            'EDUCA': [9],
-            'INCOME3': [77, 99],
-            'EMPLOY1': [9],
-            'MARITAL': [9],
-        }
-        for col, codes in missing_codes.items():
-            if col in self.df.columns:
-                self.df[col] = self.df[col].replace(codes, np.nan)
+        for key, value in self.r_columns.items():
+            if key in numeric_columns:
+                col_name.append(value)
 
-    def missing(self, data):
-        """Build a missing-value report string for the given DataFrame."""
-        missing_report = pd.DataFrame({
-            'Column': data.columns,
-            'Missing_Count': data.isna().sum().values,
-            'Missing_Percentage': (data.isna().mean().values * 100).round(2),
-            'Non_Missing_Count': data.notna().sum().values,
-            'Data_Type': data.dtypes.astype(str).values
-        })
-        missing_report = missing_report.sort_values(
-            'Missing_Percentage', ascending=False
-        ).reset_index(drop=True)
-        return missing_report.to_string(index=False)
+        self.X_train[col_name] = imputer.fit_transform(
+            self.X_train[col_name])
+        self.X_test[col_name] = imputer.transform(
+            self.X_test[col_name])
+    def impute_categorical_values(self):
+        text_columns = self.X_train.select_dtypes(include="object").columns
+        imputer = SimpleImputer(strategy='most_frequent')
+        col_name = []
 
-    def merge_data(self, X_train, X_test, y_train, y_test):
-        train_data = X_train.copy()
-        train_data['CVDSTRK3'] = y_train
-        test_data = X_test.copy()
-        test_data['CVDSTRK3'] = y_test
+        for key, value in self.r_columns.items():
+            if value in text_columns:
+                col_name.append(value)
+
+        self.X_train[col_name] = imputer.fit_transform(
+            self.X_train[col_name])
+        self.X_test[col_name] = imputer.transform(
+            self.X_test[col_name])
+    def select_columns(self):
+        # find all the column that have 2 unique values from object type columns
+        binary_cols = [col for col in self.X_train.columns if self.X_train[col].nunique() == 2 and self.X_train[col].dtype == 'object']
+# find all the column that have 3 or more unique values 
+        multi_cols = [col for col in self.X_train.columns if self.X_train[col].nunique() >= 3 and self.  X_train[col].dtype == 'object']
+# find columns that have income, education or general health in the name
+        ordinal = [col for col in self.X_train.columns if 'income' in col.lower() or 'highest_grade' in col.lower() or 'general_your_health' in col.lower()]
+        return binary_cols, multi_cols, ordinal
+    def set_order(self):
+        return [
+            # General Health
+            [
+                "Poor",
+                "Fair",
+                "Good",
+                "Very good",
+                "Excellent"
+            ],
+
+            # Education
+            [
+                "Never attended school or only kindergarten",
+                "Grades 1 through 8 (Elementary)",
+                "Grades 9 through 11 (Some high school)",
+                "Grade 12 or GED (High school graduate)",
+                "College 1 year to 3 years (Some college or technical school)",
+                "College 4 years or more (College graduate)"
+            ],
+
+            # Annual Household Income
+            [
+                "Less than $10,000",
+                "Less than $15,000 ($10,000 to < $15,000)",
+                "Less than $20,000 ($15,000 to < $20,000)",
+                "Less than $25,000 ($20,000 to < $25,000)",
+                "Less than $35,000 ($25,000 to < $35,000)",
+                "Less than $50,000 ($35,000 to < $50,000)",
+                "Less than $75,000 ($50,000 to < $75,000)",
+                "Less than $100,000 ($75,000 to < $100,000)",
+                "Less than $150,000 ($100,000 to < $150,000)",
+                "Less than $200,000 ($150,000 to < $200,000)",
+                "$200,000 or more"
+            ]
+        ]
+    def define_ordinal_encoder(self):
+        return OrdinalEncoder(
+            categories=self.set_order()
+        )
+    def define_column_transformer(self):
+        binary_cols, multi_cols, ordinal = self.select_columns()
+        return ColumnTransformer(
+            transformers=[
+                ("binary", OneHotEncoder(drop="if_binary"), binary_cols),
+                ("multi", OneHotEncoder(), multi_cols),
+                ("ordinal", self.define_ordinal_encoder(), ordinal)
+            ],
+            remainder="passthrough"
+        )
+    def transform_data(self, transformer_path):
+        preprocessor = self.define_column_transformer()
+        X_train_transformed = preprocessor.fit_transform(self.X_train)
+        X_test_transformed = preprocessor.transform(self.X_test)
+        feature_names = preprocessor.get_feature_names_out()
+        self.X_train_transformed_df = pd.DataFrame(
+            X_train_transformed.toarray() if hasattr(X_train_transformed, "toarray") else X_train_transformed,
+            columns=feature_names,
+            index=self.X_train.index
+            )
+        self.X_test_transformed_df = pd.DataFrame(
+            X_test_transformed.toarray() if hasattr(X_test_transformed, "toarray") else X_test_transformed,
+            columns=feature_names,
+            index=self.X_test.index
+            )
+        joblib.dump(preprocessor,transformer_path)
+        print("transformer saved")
+    def merge_data_transformed(self):
+        train_data = self.X_train_transformed_df.copy()
+        train_data["(Ever_told)_(you_had)_a_stroke."] = self.y_train
+        test_data = self.X_test_transformed_df.copy()
+        test_data["(Ever_told)_(you_had)_a_stroke."] = self.y_test
         return train_data, test_data
-
-    def generate_report(self, data1=None, data2=None, report_file='data_preprocessing.md'):
-        if data1 is None and data2 is None:
-            a = self.missing(self.df)
-            with open(report_file, 'a') as f:
-                f.write("##3. BEFORE PREPROCESSING:\n")
-                f.write(f"**SHAPE:** {self.df.shape}\n")
-                f.write(f"**COLUMNS:** {self.df.columns.tolist()}\n")
-                f.write(f"{a}\n")
-        else:
-            a = self.missing(data1)
-            b = self.missing(data2)
-            with open(report_file, 'a') as f:
-                f.write("##4. AFTER PREPROCESSING:**\n")
-                f.write(f"**TRAINING DATA SHAPE:** {data1.shape}\n")
-                f.write(f"**TRAINING DATA COLUMNS:** {data1.columns.tolist()}\n")
-                f.write(f"**TRAINING DATA:**\n{a}\n")
-                f.write(f"**TESTING DATA SHAPE:** {data2.shape}\n")
-                f.write(f"**TESTING DATA COLUMNS:** {data2.columns.tolist()}\n")
-                f.write(f"**TESTING DATA:**\n{b}\n")
+    def merge_data(self):
+        train_data= self.X_train.copy()
+        train_data["(Ever_told)_(you_had)_a_stroke."] = self.y_train
+        test_data = self.X_test.copy()
+        test_data["(Ever_told)_(you_had)_a_stroke."] = self.y_test
+        return train_data, test_data
 
     def save_data(self, data, file_path):
         data.to_csv(file_path, index=False)
-        print(f"Saved: {file_path}")
+
 
     def call(self):
-        report_path = os.getenv("Generate_report_preprocessing")
-        columns = [c.strip() for c in os.getenv("selected_columns").split(",")]
-        nc = [c.strip() for c in os.getenv("numeric_cols").split(",")]
-        tr = os.getenv("training")
-        te = os.getenv("test")
+        columns = ['CVDSTRK3', '_AGE80', 'SEXVAR', '_BMI5', '_RFHYPE6', 'DIABETE4', 'SMOKE100','_SMOKER3','_MICHD', 'CVDINFR4','CVDCRHD4','TOLDHI3','CHOLMED3','CHCKDNY2','PREDIAB2','EXERANY2','_TOTINDA','_PAINDX3','PAMIN13_','_PA30023','GENHLTH','PHYSHLTH','MENTHLTH','EDUCA','INCOME3','EMPLOY1','MARITAL']
+        nc = ['_AGE80','_BMI5','PAMIN13_','PHYSHLTH','MENTHLTH']
+        tr = "../dataset/processed/Train.csv"
+        te = "../dataset/processed/Test.csv"
+        transformed_tr = "../dataset/processed/transformed_train.csv"
+        transformed_te = "../dataset/processed/transformed_test.csv"
+        transformer_path = "../models/column_transformer.joblib"
+        self.Feature_selection(columns)
+        print("Feature selection Done")
+        self.decode_values(columns)
+        print("Values Decoded")
+        self.Train_test_split(target_column="(Ever_told)_(you_had)_a_stroke.")
+        print("Train test split completed with stratify y")
+        self.impute_missing_values(nc)
+        self.impute_categorical_values()
+        print(" Imputation done")
+        Train, Test = self.merge_data()
+        self.save_data(Train, tr)
+        self.save_data(Test, te)
+        print("Pre transformation data saved")
+        self.transform_data(transformer_path)
 
-        self.clean_missing_codes()
-        self.generate_report(report_file=report_path)
-
-        self.keep_necessary_columns(columns)
-        self.drop_duplicate_rows()
-        self.drop_rows_with_missing_target(columns[0])
-        self.drop_columns_with_missing_values()
-
-        X_train, X_test, y_train, y_test = self.train_test_split(columns[0])
-        X_train, X_test = self.impute_missing_values(nc, X_train, X_test)
-
-        train, test = self.merge_data(X_train, X_test, y_train, y_test)
-        train = self.drop_rows_with_missing_values(train)
-        test = self.drop_rows_with_missing_values(test)
-        self.save_data(train, tr)
-        self.save_data(test, te)
-
-
+        train_data, test_data = self.merge_data_transformed()
+        self.save_data(train_data, transformed_tr)
+        self.save_data(test_data, transformed_te)
+        print("Post transformation data saved")
 if __name__ == "__main__":
     Preprocess().call()
 
