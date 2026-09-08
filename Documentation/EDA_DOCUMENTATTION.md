@@ -16,16 +16,85 @@ Check:
 - Number of columns
 
 ### Observation
-Record the exact dataset dimensions and explain what they imply about the dataset size.
-
+345242 rows, 70 Columns
 ---
 
 ## Q2. What are the names of all features?
 List every feature/column in the dataset.
 
 ### Observation
-Identify the target variable and briefly group the remaining variables by their role or type.
-
+    -features
+       'binary__Sex_of_Respondent_Male',
+       'binary__Adults_who_have_been_told_they_have_high_blood_pressure_by_a_doctor,_nurse,_or_other_health_professional_Yes',
+       'binary__Have_you_smoked_at_least_100_cigarettes_in_your_entire_life?_[Note:_5_packs_=_100_cigarettes]_Yes',
+       'binary__Respondents_that_have_ever_reported_having_coronary_heart_disease_(CHD)_or_myocardial_infarction_(MI)_Reported having MI or CHD',
+       'binary__(Ever_told)_you_had_a_heart_attack,_also_called_a_myocardial_infarction?_Yes',
+       'binary__(Ever_told)_(you_had)_angina_or_coronary_heart_disease?_Yes',
+       'binary__Have_you_ever_been_told_by_a_doctor,_nurse_or_other_health_professional_that_your_cholesterol_is_high?_Yes',
+       'binary__Are_you_currently_taking_medicine_prescribed_by_your_doctor_or_other_health_professional_for_your_cholesterol?_Yes',
+       'binary__During_the_past_month,_other_than_your_regular_job,_did_you_participate_in_any_physical_activities_or_exercises_such_as_running,_calisthenics,_golf,_gardening,_or_walking_for_exercise?_Yes',
+       'binary__Adults_who_reported_doing_physical_activity_or_exercise_during_the_past_30_days_other_than_their_regular_job_No physical activity or exercise in last 30 days',
+       'binary__Physical_Activity_Index_Meet Aerobic Recommendations',
+       'binary__Adults_that_participated_in_greater_than_300_minutes_(or_vigorous_equivalent_minutes)_of_physical_activity_per_week_(2-levels)._301+ minutes (or vigorous equivalent minutes) of physical activity',
+       'multi__(Ever_told)_(you_had)_diabetes?_(If_Yes_-_and_respondent_is_female,_ask_Was_this_only_when_you_were_pregnant?_If_Respondent_says_pre-diabetes_or_borderline_diabetes,_use_response_code_4.)_No',
+       'multi__(Ever_told)_(you_had)_diabetes?_(If_Yes_-_and_respondent_is_female,_ask_Was_this_only_when_you_were_pregnant?_If_Respondent_says_pre-diabetes_or_borderline_diabetes,_use_response_code_4.)_No, pre-diabetes or borderline diabetes',
+       'multi__(Ever_told)_(you_had)_diabetes?_(If_Yes_-_and_respondent_is_female,_ask_Was_this_only_when_you_were_pregnant?_If_Respondent_says_pre-diabetes_or_borderline_diabetes,_use_response_code_4.)_Yes',
+       'multi__(Ever_told)_(you_had)_diabetes?_(If_Yes_-_and_respondent_is_female,_ask_Was_this_only_when_you_were_pregnant?_If_Respondent_says_pre-diabetes_or_borderline_diabetes,_use_response_code_4.)_Yes, but female told only during pregnancy',
+       'multi__Four-level_smoker_status:_Everyday_smoker,_Someday_smoker,_Former_smoker,_Non-smoker_Current smoker',
+       'multi__Four-level_smoker_status:_Everyday_smoker,_Someday_smoker,_Former_smoker,_Non-smoker_Former smoker',
+       'multi__Four-level_smoker_status:_Everyday_smoker,_Someday_smoker,_Former_smoker,_Non-smoker_Never smoked',
+       'multi__Not_including_kidney_stones,_bladder_infection_or_incontinence,_were_you_ever_told_you_had_kidney_disease?_Don't know / Not sure',
+       'multi__Not_including_kidney_stones,_bladder_infection_or_incontinence,_were_you_ever_told_you_had_kidney_disease?_No',
+       'multi__Not_including_kidney_stones,_bladder_infection_or_incontinence,_were_you_ever_told_you_had_kidney_disease?_Yes',
+       'multi__Has_a_doctor_or_other_health_professional_ever_told_you_that_you_had_prediabetes_or_borderline_diabetes?_(If_Yes_-_and_respondent_is_female,_ask:_'Was_this_only_when_you_were_pregnant?')_No',
+       'multi__Has_a_doctor_or_other_health_professional_ever_told_you_that_you_had_prediabetes_or_borderline_diabetes?_(If_Yes_-_and_respondent_is_female,_ask:_'Was_this_only_when_you_were_pregnant?')_Yes',
+       'multi__Has_a_doctor_or_other_health_professional_ever_told_you_that_you_had_prediabetes_or_borderline_diabetes?_(If_Yes_-_and_respondent_is_female,_ask:_'Was_this_only_when_you_were_pregnant?')_Yes, during pregnancy',
+       'multi__Would_you_say_that_in_general_your_health_is:_Excellent',
+       'multi__Would_you_say_that_in_general_your_health_is:_Fair',
+       'multi__Would_you_say_that_in_general_your_health_is:_Good',
+       'multi__Would_you_say_that_in_general_your_health_is:_Poor',
+       'multi__Would_you_say_that_in_general_your_health_is:_Very good',
+       'multi__What_is_the_highest_grade_or_year_of_school_you_completed?_College 1 year to 3 years (Some college or technical school)',
+       'multi__What_is_the_highest_grade_or_year_of_school_you_completed?_College 4 years or more (College graduate)',
+       'multi__What_is_the_highest_grade_or_year_of_school_you_completed?_Grade 12 or GED (High school graduate)',
+       'multi__What_is_the_highest_grade_or_year_of_school_you_completed?_Grades 1 through 8 (Elementary)',
+       'multi__What_is_the_highest_grade_or_year_of_school_you_completed?_Grades 9 through 11 (Some high school)',
+       'multi__What_is_the_highest_grade_or_year_of_school_you_completed?_Never attended school or only kindergarten',
+       'multi__Is_your_annual_household_income_from_all_sources:_(If_respondent_refuses_at_any_income_level,_code_Refused.)_$200,000 or more',
+       'multi__Is_your_annual_household_income_from_all_sources:_(If_respondent_refuses_at_any_income_level,_code_Refused.)_Less than $10,000',
+       'multi__Is_your_annual_household_income_from_all_sources:_(If_respondent_refuses_at_any_income_level,_code_Refused.)_Less than $100,000 ($75,000 to < $100,000)',
+       'multi__Is_your_annual_household_income_from_all_sources:_(If_respondent_refuses_at_any_income_level,_code_Refused.)_Less than $15,000 ($10,000 to < $15,000)',
+       'multi__Is_your_annual_household_income_from_all_sources:_(If_respondent_refuses_at_any_income_level,_code_Refused.)_Less than $150,000 ($100,000 to < $150,000)',
+       'multi__Is_your_annual_household_income_from_all_sources:_(If_respondent_refuses_at_any_income_level,_code_Refused.)_Less than $20,000 ($15,000 to < $20,000)',
+       'multi__Is_your_annual_household_income_from_all_sources:_(If_respondent_refuses_at_any_income_level,_code_Refused.)_Less than $200,000 ($150,000 to < $200,000)',
+       'multi__Is_your_annual_household_income_from_all_sources:_(If_respondent_refuses_at_any_income_level,_code_Refused.)_Less than $25,000 ($20,000 to < $25,000)',
+       'multi__Is_your_annual_household_income_from_all_sources:_(If_respondent_refuses_at_any_income_level,_code_Refused.)_Less than $35,000 ($25,000 to < $35,000)',
+       'multi__Is_your_annual_household_income_from_all_sources:_(If_respondent_refuses_at_any_income_level,_code_Refused.)_Less than $50,000 ($35,000 to < $50,000)',
+       'multi__Is_your_annual_household_income_from_all_sources:_(If_respondent_refuses_at_any_income_level,_code_Refused.)_Less than $75,000 ($50,000 to < $75,000)',
+       'multi__Are_you_currently?_A homemaker',
+       'multi__Are_you_currently?_A student',
+       'multi__Are_you_currently?_Employed for wages',
+       'multi__Are_you_currently?_Out of work for 1 year or more',
+       'multi__Are_you_currently?_Out of work for less than 1 year',
+       'multi__Are_you_currently?_Retired',
+       'multi__Are_you_currently?_Self-employed',
+       'multi__Are_you_currently?_Unable to work',
+       'multi__Are_you:_(marital_status)_A member of an unmarried couple',
+       'multi__Are_you:_(marital_status)_Divorced',
+       'multi__Are_you:_(marital_status)_Married',
+       'multi__Are_you:_(marital_status)_Never married',
+       'multi__Are_you:_(marital_status)_Separated',
+       'multi__Are_you:_(marital_status)_Widowed',
+       'ordinal__Would_you_say_that_in_general_your_health_is:',
+       'ordinal__What_is_the_highest_grade_or_year_of_school_you_completed?',
+       'ordinal__Is_your_annual_household_income_from_all_sources:_(If_respondent_refuses_at_any_income_level,_code_Refused.)',
+       'remainder__Imputed_Age_value_collapsed_above_80',
+       'remainder__Body_Mass_Index_(BMI)',
+       'remainder__Minutes_of_Physical_Activity_per_week_for_First_Activity',
+       'remainder__Now_thinking_about_your_physical_health,_which_includes_physical_illness_and_injury,_for_how_many_days_during_the_past_30_days_was_your_physical_health_not_good?',
+       'remainder__Now_thinking_about_your_mental_health,_which_includes_stress,_depression,_and_problems_with_emotions,_for_how_many_days_during_the_past_30_days_was_your_mental_health_not_good?'
+    - target
+       '(Ever_told)_(you_had)_a_stroke.'
 ---
 
 ## Q3. What are the data types of all variables?
