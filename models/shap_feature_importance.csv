@@ -1,0 +1,22 @@
+Feature,Mean_Absolute_SHAP
+age,1.5173334710626807
+work_type_children,0.15602907740022207
+hypertension,0.1459588915997096
+avg_glucose_level,0.14562518213054518
+smoking_status_never smoked,0.09606274448601163
+work_type_Self-employed,0.076930386418263
+smoking_status_smokes,0.05703196007496881
+work_type_Private,0.040147113332476676
+smoking_status_formerly smoked,0.03842013323137071
+Residence_type_Rural,0.037465234960304274
+Residence_type_Urban,0.037465234960304274
+gender_Female,0.031103674116050653
+gender_Male,0.03005954497086123
+bmi,0.029203345577042003
+ever_married_No,0.02719988419946984
+ever_married_Yes,0.02719988419946984
+work_type_Govt_job,0.023215289296196793
+heart_disease,0.021662795382681583
+work_type_Never_worked,0.013396496346672435
+smoking_status_Unknown,0.012308593080590312
+gender_Other,6.922068933431675e-19
