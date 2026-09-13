@@ -131,9 +131,11 @@ class Preprocess:
         # find all the column that have 2 unique values from object type columns
         binary_cols = [col for col in self.X_train.columns if self.X_train[col].nunique() == 2 and self.X_train[col].dtype == 'object']
 # find all the column that have 3 or more unique values 
-        multi_cols = [col for col in self.X_train.columns if self.X_train[col].nunique() >= 3 and self.  X_train[col].dtype == 'object']
+        multi_col = [col for col in self.X_train.columns if self.X_train[col].nunique() >= 3 and self.  X_train[col].dtype == 'object']
 # find columns that have income, education or general health in the name
         ordinal = [col for col in self.X_train.columns if 'income' in col.lower() or 'highest_grade' in col.lower() or 'general_your_health' in col.lower()]
+# only columns that should be in multi should not in ordinal
+        multi_cols= [x for x in multi_col if x not in ordinal]
         return binary_cols, multi_cols, ordinal
     def set_order(self):
         return [
