@@ -131,7 +131,7 @@ The project uses a stroke prediction dataset containing demographic, health, and
 
 ### Main Features
 
-`Age` · `Gender` · `Hypertension` · `Heart Disease` · `Average Glucose Level` · `BMI` · `Smoking Status` · `Work Type` · `Residence Type` · `Marital Status`
+`Age` · `Gender` · `Hypertension` · `Heart Disease` · `Average Glucose Level` · `BMI` · `Smoking Status` · `Work Type` · `Residence Type` · `Marital Status` · `Physical Activity` · `General Health` · `Diabetes` · `Sleep Duration` · `High Cholesterol`
 
 ---
 
@@ -149,43 +149,44 @@ The EDA stage focuses on understanding the dataset and identifying patterns asso
 These findings also feed directly into the analysis presented in the accompanying research paper.
 
 ---
+## 🤖 Machine Learning
 
-## Machine Learning
+The classical machine learning pipeline evaluates multiple classification models for stroke prediction:
 
-The current classical ML pipeline includes:
-
-| Model | Role |
-|:---|:---|
-| Logistic Regression | Baseline classification |
-| Decision Tree | Tree-based classification |
-| Random Forest | Ensemble classification |
+| Model                | Role                            |
+| :------------------- | :------------------------------ |
+| Logistic Regression  | Baseline classification         |
+| HistGradientBoosting | Gradient-boosted classification |
+| Random Forest        | Ensemble classification         |
 
 Models are evaluated using **Accuracy, Precision, Recall, F1-score, ROC-AUC, and Confusion Matrix**.
 
-> Because the dataset is highly imbalanced, **accuracy alone is not used to determine the best model.**
+> Since stroke datasets are typically highly imbalanced, **accuracy alone is not used to assess model performance**. Greater emphasis is placed on class-sensitive metrics such as Recall, F1-score, and ROC-AUC.
 
 ---
 
-## Deep Learning
+## 🧠 Deep Learning
 
-As an extension of the classical ML pipeline, the project explores a **feed-forward neural network (MLP)** for stroke prediction, evaluated using the same metrics as the classical models. This lets the project investigate a core research question:
+The project extends the classical ML pipeline with **TabNet**, a deep learning architecture designed for tabular data.
 
-> **Can Deep Learning improve stroke-risk prediction compared with traditional Machine Learning on this dataset?**
+The deep learning pipeline investigates whether neural approaches can improve stroke prediction while maintaining reliable performance on imbalanced data.
 
-The final model will be selected based on experimental results, not assumption.
+**TabNet** predictions are evaluated using the same core classification metrics used for the classical models, enabling a consistent comparison between approaches.
 
 ---
 
-## Explainable AI
+## 🔍 Explainable AI
 
-NeuroShield AI uses **SHAP (SHapley Additive exPlanations)** to make model predictions interpretable rather than opaque.
+NeuroShield-AI uses **SHAP (SHapley Additive exPlanations)** to interpret model predictions and identify the factors influencing stroke-risk predictions.
 
-| Level | Question it answers |
-|:---|:---|
-| **Global** | Which features influence predictions the most across the whole dataset? |
-| **Local** | Why did the model produce *this* prediction for *this* patient? |
+| Analysis               | Purpose                                                                           |
+| :--------------------- | :-------------------------------------------------------------------------------- |
+| **Global Explanation** | Identifies features that have the greatest overall influence on model predictions |
+| **Local Explanation**  | Explains why a specific prediction was made for an individual case                |
 
-The goal is to move from a black-box output to a transparent one:
+SHAP analysis is applied across the project's trained models to provide both overall feature importance and individual prediction explanations.
+
+The goal is to move from:
 
 `Prediction → Explanation → Understanding`
 
@@ -232,11 +233,11 @@ cd NeuroShield-AI
 | Data Preprocessing | ✅ |
 | Exploratory Data Analysis | ✅ |
 | ML Model Training | ✅ |
-| ML Model Evaluation | 🔄 |
-| Deep Learning | ⏳ |
-| ML vs. DL Comparison | ⏳ |
+| ML Model Evaluation | ✅ |
+| Deep Learning | ✅ |
+| ML vs. DL Comparison | ✅ |
 | Final Model Selection | ⏳ |
-| SHAP Explainability | ⏳ |
+| SHAP Explainability | ✅ |
 | Model Deployment | ⏳ |
 | Web Application | ⏳ |
 | Research Paper | 🔄 |
@@ -245,26 +246,60 @@ cd NeuroShield-AI
 
 ---
 
-## Repository Structure
+## 📁 Project Structure
 
 ```text
 NeuroShield-AI/
 │
-├── data/
-├── notebooks/
-│   ├── 01_data_preprocessing.ipynb
-│   └── 02_eda.ipynb
+├── 📂 dataset/
+│   ├── 📂 Document/                  # Dataset documentation & codebook
+│   ├── 📂 raw/                       # Original datasets
+│   └── 📂 processed/                 # Cleaned & transformed datasets
 │
-├── models/
-├── src/
-├── frontend/
-├── backend/
+├── 📂 DeepLearning dataset/
+│   ├── 📂 Original Dataset/          # Original deep learning dataset
+│   └── 📂 Pre-processed Dataset/     # Preprocessed deep learning data
 │
-├── README.md
-└── LICENSE
+├── 📂 notebooks/
+│   ├── 01_preprocessing.ipynb        # Data preprocessing
+│   ├── 02_eda.ipynb                  # Exploratory data analysis
+│   ├── 03_model_training.ipynb       # Machine learning models
+│   ├── 04_deep_learning_preprocessing.ipynb
+│   ├── 04_shap_explainability.ipynb  # Model explainability
+│   ├── DeepLearning.ipynb            # Deep learning experiments
+│   ├── SHAP_Model_Training.ipynb     # SHAP analysis
+│   └── SHAP_DeepLearning_TabNet.ipynb
+│
+├── 📂 src/
+│   ├── Preprocess.py                 # Data preprocessing pipeline
+│   ├── Decode_xpt.py                 # XPT/SAS data processing
+│   ├── html_to_json.py               # Codebook conversion
+│   └── EDA.md                        # EDA documentation
+│
+├── 📂 models/
+│   ├── stroke_model.pkl              # Trained ML model
+│   ├── stroke_model_final.pkl        # Final model
+│   ├── stroke_model_metadata.pkl     # Model metadata
+│   ├── tabnet_stroke_model.zip       # TabNet model
+│   ├── tabnet_metadata.pkl           # TabNet metadata
+│   └── 📂 shap/                      # SHAP explainability outputs
+│
+├── 📂 research_figures/              # Research & visualization outputs
+│
+├── 📂 Documentation/
+│   ├── Data_cleaning.md              # Data cleaning methodology
+│   ├── data_collection.md            # Data collection methodology
+│   ├── DeepLearning_Documentation.md # Deep learning methodology
+│   ├── Exploratory_Data_Analysis_Documentation.md
+│   ├── Model_Training_Documentation.md
+│   └── NeuroShield_AI_Pragati_Contribution_Documentation.docx
+│
+├── 📄 requirements.txt               # Python dependencies
+├── 📄 .gitignore                     # Git exclusions
+├── 📄 .gitattributes                 # Git LFS configuration
+├── 📄 LICENSE                        # Project license
+└── 📄 README.md                      # Project documentation
 ```
-
-This structure will evolve as the Deep Learning, XAI, backend, and frontend components are added.
 
 ---
 
