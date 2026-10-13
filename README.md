@@ -315,7 +315,7 @@ NeuroShield AI is being developed alongside a research paper exploring:
 
 ## License
 
-*(Add license details here — e.g., MIT, Apache 2.0 — once finalized.)*
+MIT License
 
 ---
 
