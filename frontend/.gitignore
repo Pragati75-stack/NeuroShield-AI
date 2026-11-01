@@ -1,0 +1,39 @@
+
+# Dependencies
+node_modules/
+
+# Build output
+dist/
+build/
+
+# Cache
+.cache/
+.vite/
+
+# Environment variables
+.env
+.env.*
+!.env.example
+
+# Vite temporary files
+vite.config.*.timestamp-*
+
+# TypeScript
+*.tsbuildinfo
+
+# Logs
+*-debug.log*
+logs/
+*.log
+
+# Temporary files
+.claude-replay.*
+.tmp-*
+
+# Operating system
+.DS_Store
+Thumbs.db
+
+# Platform-managed state
+/.plugins/
+/.opencode-skills/
